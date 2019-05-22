@@ -1,0 +1,314 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Dados Gerais
+      </mat-panel-title>
+      <mat-panel-description>
+        Informações gerais do pedido
+        <mat-icon>info</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-select placeholder="Produto" name="produto" id="produto">
+        <mat-option value="SOJA">SOJA</mat-option>
+        <!--
+        <mat-option value="MILHO">MILHO</mat-option>
+        <mat-option value="SORGO">SORGO</mat-option>
+        <mat-option value="FEIJÃO">FEIJÃO</mat-option>
+        <mat-option value="ARROZ">ARROZ</mat-option>
+        <mat-option value="MILHETO">MILHETO</mat-option>
+        -->
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" min="1" name="qtSacos" id="qtSacos" placeholder="Quantidade de Sacos (60kg)">
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Compra e Venda
+      </mat-panel-title>
+      <mat-panel-description>
+        Informações do Comprador e Vendedor
+        <mat-icon>ballot</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-grid-list cols="2" class="mat-grid-compra-venda">
+      <mat-grid-tile>
+      <!--<div style="float: left; margin-right: 15px;">-->
+      <div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Compra</mat-card-title>
+            <mat-card-subtitle>Informações do Comprador</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <app-fornecedor></app-fornecedor>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Compra</mat-card-title>
+            <mat-card-subtitle>Informações de Compra</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+            <mat-form-field>
+              <mat-select placeholder="Filial Compra" name="filial_compra" id="filial_compra">
+                <mat-option value="GO">GO</mat-option>
+                <mat-option value="MG">MG</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Atividade Compra" name="tipo_atividade_compra" id="tipo_atividade_compra">
+                <mat-option value="PROD">PRODUÇÃO</mat-option>
+                <mat-option value="COOPERATIVA">COOPERATIVA</mat-option>
+                <mat-option value="CEREALISTA">CEREALISTA</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+            <div>
+              <span>
+                <label>Frete: </label>
+                <mat-radio-group>
+                  <mat-radio-button value="N" name="possuiFreteCompra" id="possuiFreteCompra_N" checked>
+                    Não&nbsp;&nbsp;&nbsp;
+                  </mat-radio-button>
+                  <mat-radio-button value="S" name="possuiFreteCompra" id="possuiFreteCompral_S">
+                    Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </mat-radio-button>
+                </mat-radio-group>
+              </span>
+              <mat-form-field>
+                <input matInput type="number" min="1" name="compraFrete" id="compraFrete" placeholder="Valor do Frete/Ton">
+              </mat-form-field>
+            </div>
+            <div>
+              <span>
+                <label>Corr.: </label>
+                <mat-radio-group>
+                  <mat-radio-button value="N" name="possuiCompraCorretor" id="possuiCompraCorretor_N" checked>
+                    Não&nbsp;&nbsp;&nbsp;
+                  </mat-radio-button>
+                  <mat-radio-button value="S" name="possuiCompraCorretor" id="possuiCompraCorretor_S">
+                    Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </mat-radio-button>
+                </mat-radio-group>
+              </span>
+              <mat-form-field>
+                <input matInput type="number" min="1" name="compraCorret" id="compraCorret" placeholder="Valor Comissão">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <input matInput type="text" name="empresa" id="empresa" placeholder="Empresa">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Safra" name="safra" id="safra">
+                  <mat-option value="{{ safraValorInicial }}">{{ safraValorInicial }}</mat-option>
+                  <mat-option value="{{ safraValorFinal }}">{{ safraValorFinal }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <span>
+                <label>Pró Rural: </label>
+                <mat-radio-group>
+                  <mat-radio-button value="N" name="possuiProRural" id="possuiProRural_N" checked>
+                    Não&nbsp;&nbsp;&nbsp;
+                  </mat-radio-button>
+                  <mat-radio-button value="S" name="possuiProRural" id="possuiProRural_S">
+                    Sim
+                  </mat-radio-button>
+                </mat-radio-group>
+              </span>
+              <mat-form-field>
+                <textarea matInput placeholder="Observação" name="obsMod" id="obsMod"></textarea>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div>
+          <mat-card>
+              <mat-card-header>
+                <mat-card-title>Vendedor</mat-card-title>
+                <mat-card-subtitle>Informações do Vendedor</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <app-cliente></app-cliente>
+              </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Venda</mat-card-title>
+              <mat-card-subtitle>Informações de Venda</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div>
+                <mat-form-field>
+                  <mat-select placeholder="Filial Venda" name="filial_venda" id="filial_venda">
+                    <mat-option value="GO">GO</mat-option>
+                    <mat-option value="MG">MG</mat-option>
+                    <mat-option value="PR">PR</mat-option>
+                    <mat-option value="RS">RS</mat-option>
+                    <mat-option value="RJ">RJ</mat-option>
+                    <mat-option value="SC">SC</mat-option>
+                    <mat-option value="SP">SP</mat-option>
+                    <mat-option value="OUTROSESTADOS">OUTROS ESTADOS</mat-option>
+                    <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-select placeholder="Atividade Venda" name="tipo_atividade_venda" id="tipo_atividade_venda">
+                      <mat-option value="PROD">PRODUÇÃO</mat-option>
+                      <mat-option value="RACOES">RAÇÕES</mat-option>
+                      <mat-option value="GRANJA">GRANJA</mat-option>
+                      <mat-option value="HUMANO">HUMANO</mat-option>
+                      <mat-option value="EXP">EXP</mat-option>
+                      <mat-option value="OUTROS">OUTROS</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div>
+                  <span>
+                    <label>Frete: </label>
+                    <mat-radio-group>
+                      <mat-radio-button value="N" name="possuiFreteCompra" id="possuiFreteCompra_N" checked>
+                        Não&nbsp;&nbsp;&nbsp;
+                      </mat-radio-button>
+                      <mat-radio-button value="S" name="possuiFreteCompra" id="possuiFreteCompral_S">
+                        Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </span>
+                  <mat-form-field>
+                    <input matInput type="number" min="1" name="compraFrete" id="compraFrete" placeholder="Valor do Frete/Ton">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <span>
+                    <label>Corr.: </label>
+                    <mat-radio-group>
+                      <mat-radio-button value="N" name="possuiCompraCorretor" id="possuiCompraCorretor_N" checked>
+                        Não&nbsp;&nbsp;&nbsp;
+                      </mat-radio-button>
+                      <mat-radio-button value="S" name="possuiCompraCorretor" id="possuiCompraCorretor_S">
+                        Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </span>
+                  <mat-form-field>
+                    <input matInput type="number" min="1" name="compraCorret" id="compraCorret" placeholder="Valor Comissão">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field>
+                    <mat-select placeholder="Destino Grão" name="destGrao" id="destGrao">
+                      <mat-option value="ESTOQUE">ESTOQUE</mat-option>
+                      <mat-option value="EXPORTACAO">ESPORTAÇÃO</mat-option>
+                      <mat-option value="INTERNO">INTERNO</mat-option>
+                      <mat-option value="MERCADO INTERNO">MERCADO INTERNO</mat-option>
+                      <mat-option value="MS">MS</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Tipo de Venda" name="tpPedido" id="tpPedido">
+                      <mat-option value="COMERCIAL">COMERCIAL</mat-option>
+                      <mat-option value="ESTOQUE">ESTOQUE</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Análise
+      </mat-panel-title>
+      <mat-panel-description>
+        Informações para análise do pedido
+        <mat-icon>equalizer</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Fim</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+<app-fornecedor></app-fornecedor>
+<app-cliente></app-cliente>
+
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Input">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+<div class="example-container">
+  <mat-form-field hintLabel="Max 10 characters">
+    <input matInput #input maxlength="10" placeholder="Enter some input">
+    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select me">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="First name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" min="1" placeholder="Age">
+  </mat-form-field>
+</div>
