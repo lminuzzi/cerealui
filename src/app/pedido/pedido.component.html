@@ -1,3 +1,4 @@
+<form [formGroup]="formPedido" (ngSubmit)="onSubmit()">
 <mat-accordion class="example-headers-align">
   <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
     <mat-expansion-panel-header>
@@ -9,24 +10,41 @@
         <mat-icon>info</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Produto" name="produto" id="produto">
+          <mat-option value="SOJA">SOJA</mat-option>
+          <!--
+          <mat-option value="MILHO">MILHO</mat-option>
+          <mat-option value="SORGO">SORGO</mat-option>
+          <mat-option value="FEIJÃO">FEIJÃO</mat-option>
+          <mat-option value="ARROZ">ARROZ</mat-option>
+          <mat-option value="MILHETO">MILHETO</mat-option>
+          -->
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-select placeholder="Produto" name="produto" id="produto">
-        <mat-option value="SOJA">SOJA</mat-option>
-        <!--
-        <mat-option value="MILHO">MILHO</mat-option>
-        <mat-option value="SORGO">SORGO</mat-option>
-        <mat-option value="FEIJÃO">FEIJÃO</mat-option>
-        <mat-option value="ARROZ">ARROZ</mat-option>
-        <mat-option value="MILHETO">MILHETO</mat-option>
-        -->
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="number" min="1" name="qtSacos" id="qtSacos" placeholder="Quantidade de Sacos (60kg)">
-    </mat-form-field>
-
+      <mat-form-field>
+        <input matInput type="number" min="1" name="qtSacos" id="qtSacos" placeholder="Quantidade de Sacos (60kg)">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput type="text" name="titular_banco" id="titular_banco" placeholder="Titular">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="cpf_banco" id="cpf_banco" placeholder="CPF">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="agencia_banco" id="agencia_banco" placeholder="Agência">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="conta_banco" id="conta_banco" placeholder="Conta">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="nome_banco" id="nome_banco" placeholder="Nome do Banco">
+      </mat-form-field>
+    </div>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Próximo</button>
     </mat-action-row>
@@ -312,3 +330,4 @@
     <input matInput type="number" min="1" placeholder="Age">
   </mat-form-field>
 </div>
+</form>

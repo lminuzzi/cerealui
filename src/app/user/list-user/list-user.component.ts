@@ -34,7 +34,7 @@ export class ListUserComponent implements OnInit {
 
   users: any;
   user = JSON.parse(window.sessionStorage.getItem('user'));
-  displayedColumns: string[] = ['username', 'perfil'];
+  displayedColumns: string[] = ['username', 'perfil', 'acao'];
   dataSource;
 
   constructor(private router: Router, private userService: UserService) { }
@@ -60,6 +60,7 @@ export class ListUserComponent implements OnInit {
       .subscribe( data => {
         //debugger
         this.users = this.users.filter(u => u !== user);
+        this.dataSource = new MatTableDataSource(this.users);
       })
   };
 

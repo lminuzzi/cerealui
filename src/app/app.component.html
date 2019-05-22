@@ -23,8 +23,8 @@
       </div>
       <div class="filler">&nbsp;</div>
       <div>
-        <span><small>Usuário: </small></span>
-        <span>&nbsp;&nbsp;&nbsp;<small>Perfil: </small></span>
+        <span><small>Usuário: {{ user.username }}&nbsp;|&nbsp;Perfil: {{ user.perfil }}&nbsp; </small></span>
+        <span><small><button mat-raised-button (click)="logout()">Logout</button></small></span>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>

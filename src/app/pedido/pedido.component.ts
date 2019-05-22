@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Pedido } from './pedido';
 import { PedidoService } from './pedido.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedido',
@@ -10,7 +11,9 @@ import { PedidoService } from './pedido.service';
 })
 export class PedidoComponent implements OnInit {
 
-  constructor(private pedidoService:PedidoService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private pedidoService:PedidoService,
+              private formBuilder: FormBuilder) { }
 
   public formPedido: FormGroup
   public pedido:Pedido = new Pedido()
@@ -41,6 +44,10 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!window.sessionStorage.getItem('token')) {
+      this.router.navigate(['login']);
+      return;
+    }
     this.formPedido = this.formBuilder.group({
       nrSiscdb: [''],
       nrPedido: [''],
@@ -124,4 +131,10 @@ export class PedidoComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    this.pedidoService.createPedido(this.formPedido.value)
+      .subscribe( data => {
+        this.router.navigate(['list-user']);
+      });
+  }
 }

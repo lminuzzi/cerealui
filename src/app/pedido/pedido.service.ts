@@ -16,4 +16,8 @@ export class PedidoService {
   getPedidoByNrSiscdb(nrSiscdb: number): Observable<Pedido> {
     return this.http.get<Pedido>(this.url + '/' + nrSiscdb + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
   }
+
+  createPedido(pedido: Pedido){
+    return this.http.post(this.url + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, pedido);
+  }
 }
