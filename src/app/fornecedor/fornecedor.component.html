@@ -1,8 +1,50 @@
 <mat-form-field class="example-full-width">
-  <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="fornecedorCtrl" [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
+  <input type="text" placeholder="Fornecedor (min 4 letras)" aria-label="Number" matInput [formControl]="fornecedorCtrl" [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getFornecedorByNome($event.option.value)'>
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
       {{option}}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+
+<div *ngIf="mostrarDetalhesFornecedor">
+  <input type="hidden" name="idFornecedor" value="{{fornecedor.idFornecedor}}"/>
+  <!--
+  <div class="form-group">
+      <label for="nomeFornecedor">
+        Fornecedor: {{fornecedor.nomeFornecedor}}
+      </label>
+  </div>
+  -->
+  <div class="form-group" *ngIf="fornecedor.cpf != ''">
+      PESSOA FÍSICA<br/>
+      <label for="cpf">
+        CPF: {{fornecedor.cpf}}
+      </label>
+  </div>
+
+  <div class="form-group" *ngIf="fornecedor.cnpj != ''">
+      PESSOA JURÍDICA<br/>
+      <label for="cnpj">
+        CNPJ: {{fornecedor.cnpj}}
+      </label>
+  </div>
+  <div class="form-group">
+      <label for="local">
+        Cidade: {{fornecedor.local}}
+      </label>
+  </div>
+  <div class="form-group">
+      <label for="local">
+        Estado: {{fornecedor.regiao}}
+      </label>
+      <!--
+      <mat-select placeholder="Estado" name="regiao" id="regiao" formControlName="regiao">
+        <mat-option value="DF">DF</mat-option>
+        <mat-option value="GO">GO</mat-option>
+        <mat-option value="MG">MG</mat-option>
+      </mat-select>
+      -->
+  </div>
+</div>
+<br/>

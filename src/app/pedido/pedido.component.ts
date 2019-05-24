@@ -44,10 +44,13 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit() {
+    //TODO retirar comentário
+    /*
     if(!window.sessionStorage.getItem('token')) {
       this.router.navigate(['login']);
       return;
     }
+    */
     this.formPedido = this.formBuilder.group({
       nrSiscdb: [''],
       nrPedido: [''],
@@ -76,7 +79,7 @@ export class PedidoComponent implements OnInit {
         inscEst: [''],
         tipoPessoa: ['']
       }],
-      compra: [{
+      //compra: [{
         compraCorret: [''],
         compraCorretTotal: [''],
         compraCusto: [''],
@@ -92,9 +95,9 @@ export class PedidoComponent implements OnInit {
         empresa: [''],
         safra: [''],
         tipoAtividadeCompra: [''],
-        possuiProRural: ['']
-      }],
-      venda: [{
+        possuiProRural: [''],
+      //}],
+      //venda: [{
         vendaCorret: [''],
         vendaCorretTotal: [''],
         vendaCusto: [''],
@@ -108,8 +111,8 @@ export class PedidoComponent implements OnInit {
         tradingRazaoNome: [''],
         tradingCidade: [''],
         tradingEstado: [''],
-        tipoAtividadeVenda: ['']
-      }],
+        tipoAtividadeVenda: [''],
+      //}],
       dataPedido: [''],
       tpPedido: [''],
       custosAdicionais: [''],
@@ -131,10 +134,18 @@ export class PedidoComponent implements OnInit {
     });
   }
 
+  public analisarPedido() {
+    console.log(this.formPedido.value)
+  }
+
   onSubmit() {
+    alert('submit')
+    this.pedidoService.createPedido(this.formPedido.value);
+    /*
     this.pedidoService.createPedido(this.formPedido.value)
       .subscribe( data => {
         this.router.navigate(['list-user']);
       });
+    */
   }
 }
