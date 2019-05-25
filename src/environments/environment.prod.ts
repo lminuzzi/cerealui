@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host: 'http://luciano.minuzzi.com/cerealsul'
+  host: 'http://lucianominuzzi.com/cerealsulapp/'
 };
