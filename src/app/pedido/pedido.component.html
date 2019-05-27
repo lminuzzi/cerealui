@@ -106,9 +106,24 @@
                   </mat-radio-button>
                 </mat-radio-group>
               </span>
-              <mat-form-field>
-                <input matInput type="number" min="1" name="compraFrete" id="compraFrete" placeholder="Valor do Frete/Ton" formControlName="compraFrete">
-              </mat-form-field>
+            </div>
+            <div>
+              <div>
+                <span>
+                  <label>Tipo Frete: </label>
+                  <mat-radio-group>
+                    <mat-radio-button value="PF" name="tipoFreteCompra" id="tipoFreteCompra_PF" checked >
+                      PF&nbsp;
+                    </mat-radio-button>
+                    <mat-radio-button value="PJ" name="tipoFreteCompra" id="tipoFreteCompra_PJ" >
+                      PJ&nbsp;&nbsp;&nbsp;&nbsp;
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </span>
+                <mat-form-field>
+                  <input matInput type="number" min="1" name="compraFrete" id="compraFrete" placeholder="Valor do Frete/Ton" formControlName="compraFrete">
+                </mat-form-field>
+              </div>
             </div>
             <div>
               <span>
@@ -128,7 +143,9 @@
             </div>
             <div>
               <mat-form-field>
-                <input matInput type="text" name="empresa" id="empresa" placeholder="Empresa" formControlName="empresa">
+                <mat-select placeholder="Empresa" name="empresa" id="empresa" formControlName="empresa">
+                  <mat-option *ngFor="let empresa of empresas;" value="{{empresa}}">{{empresa}}</mat-option>
+                </mat-select>
               </mat-form-field>
               <mat-form-field>
                 <mat-select placeholder="Safra" name="safra" id="safra" formControlName="safra">
@@ -149,13 +166,32 @@
                   </mat-radio-button>
                 </mat-radio-group>
               </span>
-              <mat-form-field>
-                <input matInput placeholder="Data de Pagamento" name="dataPagamentoCompra" id="dataPagamentoCompra"
-                  [matDatepicker]="dataPagamentoCompra" (focus)="dataPagamentoCompra.open()" readonly>
-              </mat-form-field>
-              <mat-datepicker #dataPagamentoCompra></mat-datepicker>
+              <span>
+                <label>FunRural: </label>
+                <mat-radio-group>
+                  <mat-radio-button value="N" name="funrural" id="funrural_N" checked >
+                    Não&nbsp;
+                  </mat-radio-button>
+                  <mat-radio-button value="S" name="funrural" id="funrural_S" >
+                    Sim&nbsp;&nbsp;&nbsp;&nbsp;
+                  </mat-radio-button>
+                </mat-radio-group>
+              </span>
             </div>
             <div>
+              <mat-form-field>
+                <input matInput type="text" name="periodoEntrega" id="periodoEntrega" placeholder="Período Entrega" formControlName="periodoEntrega">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="text" name="localEmbarque" id="localEmbarque" placeholder="Local Embarque" formControlName="localEmbarque">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                  <input matInput placeholder="Data de Pagamento" name="dataPagamentoCompra" id="dataPagamentoCompra"
+                    [matDatepicker]="dataPagamentoCompra" (focus)="dataPagamentoCompra.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #dataPagamentoCompra></mat-datepicker>
               <mat-form-field>
                 <textarea matInput placeholder="Observação" name="obsMod" id="obsMod" formControlName="obsMod"></textarea>
               </mat-form-field>
@@ -218,6 +254,19 @@
                       </mat-radio-button>
                     </mat-radio-group>
                   </span>
+                </div>
+                <div>
+                  <span>
+                    <label>Tipo Frete: </label>
+                    <mat-radio-group>
+                      <mat-radio-button value="PF" name="tipoFreteVenda" id="tipoFreteVenda_PF" checked >
+                        PF&nbsp;
+                      </mat-radio-button>
+                      <mat-radio-button value="PJ" name="tipoFreteVenda" id="tipoFreteVenda_PJ" >
+                        PJ&nbsp;&nbsp;&nbsp;&nbsp;
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </span>
                   <mat-form-field>
                     <input matInput type="number" min="1" name="vendaFrete" id="vendaFrete" placeholder="Valor do Frete/Ton" formControlName="vendaFrete">
                   </mat-form-field>
@@ -242,10 +291,8 @@
                   <mat-form-field>
                     <mat-select placeholder="Destino Grão" name="destGrao" id="destGrao" formControlName="destGrao">
                       <mat-option value="ESTOQUE">ESTOQUE</mat-option>
-                      <mat-option value="EXPORTACAO">ESPORTAÇÃO</mat-option>
-                      <mat-option value="INTERNO">INTERNO</mat-option>
+                      <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
                       <mat-option value="MERCADO INTERNO">MERCADO INTERNO</mat-option>
-                      <mat-option value="MS">MS</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
@@ -345,18 +392,6 @@
             <mat-form-field>
               <input matInput name="margem" id="margem" placeholder="%Margem" formControlName="margem">
             </mat-form-field>
-            <br/>
-            <span>
-              <label>Pagar Juros à Produtor: </label>
-              <mat-radio-group>
-                <mat-radio-button value="N" name="" id="" checked >
-                  Não&nbsp;&nbsp;&nbsp;
-                </mat-radio-button>
-                <mat-radio-button value="S" name="" id="" >
-                  Sim&nbsp;&nbsp;
-                </mat-radio-button>
-              </mat-radio-group>
-            </span>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

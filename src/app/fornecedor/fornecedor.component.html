@@ -1,6 +1,6 @@
 <mat-form-field class="example-full-width">
   <input type="text" placeholder="Fornecedor (min 4 letras)" aria-label="Number" matInput [formControl]="fornecedorCtrl" [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getFornecedorByNome($event.option.value)'>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getFornecedorById($event.option.value)'>
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
       {{option}}
     </mat-option>
@@ -16,14 +16,14 @@
       </label>
   </div>
   -->
-  <div class="form-group" *ngIf="fornecedor.cpf != ''">
+  <div class="form-group" *ngIf="mostrarDetalhesFornecedor && fornecedor.cpf != ''">
       PESSOA FÍSICA<br/>
       <label for="cpf">
         CPF: {{fornecedor.cpf}}
       </label>
   </div>
 
-  <div class="form-group" *ngIf="fornecedor.cnpj != ''">
+  <div class="form-group" *ngIf="mostrarDetalhesFornecedor && fornecedor.cnpj != ''">
       PESSOA JURÍDICA<br/>
       <label for="cnpj">
         CNPJ: {{fornecedor.cnpj}}

@@ -60,7 +60,7 @@ export class FornecedorComponent implements OnInit {
       response => {
         this.fornecedores = response
         this.fornecedores.forEach(val => {
-          this.options.push(val.nomeFornecedor)
+          this.options.push(val.idFornecedor + ' - ' + val.nomeFornecedor)
         })
       },
       error => {
@@ -69,8 +69,21 @@ export class FornecedorComponent implements OnInit {
     )
   }
 
-  public getFornecedorByNome(value: string) {
-    this.fornecedor = this.fornecedores.filter(val => val.nomeFornecedor == value)[0]
+  public getFornecedorById(value: string) {
+    console.log(value)
+    const idFornec: number = this.parseId(value);
+    console.log("idFornec: "+idFornec)
+    this.fornecedor = this.fornecedores.filter(val => val.idFornecedor == idFornec)[0]
     this.mostrarDetalhesFornecedor = true;
+  }
+
+  private parseId(value: string) {
+    var parsedId: number
+    if (value.includes('-')) {
+      parsedId = Number.parseInt(value.split('-')[0].trim());
+    } else {
+      parsedId = Number.parseInt(value);
+    }
+    return parsedId;
   }
 }

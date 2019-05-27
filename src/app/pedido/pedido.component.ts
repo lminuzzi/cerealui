@@ -18,6 +18,8 @@ export class PedidoComponent implements OnInit {
   public formPedido: FormGroup
   public pedido:Pedido = new Pedido()
 
+  empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES', 'NOBRE ALIMENTOS']
+
   email = new FormControl('', [Validators.required, Validators.email]);
   step = 0;
 
@@ -38,8 +40,8 @@ export class PedidoComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
+    return this.email.hasError('required') ? 'Campo e-mail deve ser preenchido' :
+        this.email.hasError('email') ? 'E-mail não é válido' :
             '';
   }
 

@@ -35,6 +35,10 @@ export class EditUserComponent implements OnInit {
       });
   }
 
+  listUser(): void {
+    this.router.navigate(['list-user']);
+  };
+
   onSubmit() {
     this.userService.updateUser(this.editForm.value)
       .pipe(first())

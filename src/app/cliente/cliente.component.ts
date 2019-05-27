@@ -38,7 +38,7 @@ export class ClienteComponent implements OnInit {
       tipoPessoa: ['']
     });
 
-    this.getClienteesList()
+    this.getClientesList()
 
     this.filteredOptions = this.clienteCtrl.valueChanges
       .pipe(
@@ -56,12 +56,12 @@ export class ClienteComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  public getClienteesList() {
+  public getClientesList() {
     this.clienteService.getClientes().subscribe(
       response => {
         this.clientes = response
         this.clientes.forEach(val => {
-          this.options.push(val.nomeCliente)
+          this.options.push(val.idCliente + ' - ' + val.nomeCliente)
         })
       },
       error => {
@@ -70,9 +70,21 @@ export class ClienteComponent implements OnInit {
     )
   }
 
-  public getClienteByNome(value: string) {
-    this.cliente = this.clientes.filter(val => val.nomeCliente == value)[0]
+  public getClienteById(value: string) {
+    const idCli: number = this.parseId(value);
+    this.cliente = this.clientes.filter(val => val.idCliente == idCli)[0]
     this.mostrarDetalhesCliente = true;
+  }
+
+  private parseId(value: string) {
+    var parsedId: number
+    if (value.includes('-')) {
+      parsedId = Number.parseInt(value.split('-')[0].trim());
+    }
+    else {
+      parsedId = Number.parseInt(value);
+    }
+    return parsedId;
   }
 
 }

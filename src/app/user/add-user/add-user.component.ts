@@ -26,6 +26,10 @@ export class AddUserComponent implements OnInit {
     });
   }
 
+  listUser(): void {
+    this.router.navigate(['list-user']);
+  };
+
   onSubmit() {
     this.userService.createUser(this.addForm.value)
       .subscribe( data => {

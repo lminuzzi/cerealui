@@ -1,6 +1,6 @@
 <mat-form-field class="example-full-width">
     <input type="text" placeholder="Cliente (min 4 letras)" aria-label="Number" matInput [formControl]="clienteCtrl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getClienteByNome($event.option.value)'>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getClienteById($event.option.value)'>
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option}}
       </mat-option>
