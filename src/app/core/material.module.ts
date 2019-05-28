@@ -6,6 +6,7 @@ import {
   MatExpansionModule, MatSidenavModule, MatListModule, MatAutocompleteModule, MatSelectModule,
   MatSlideToggleModule, MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatRadioModule
 } from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {
     MatNativeDateModule,
     MatSlideToggleModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ],
   exports: [
     CommonModule,
@@ -52,7 +54,8 @@ import {
     MatNativeDateModule,
     MatSlideToggleModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ],
 })
 export class CustomMaterialModule { }

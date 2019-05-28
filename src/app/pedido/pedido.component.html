@@ -61,9 +61,9 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div>
-    <mat-grid-list cols="2">
-      <mat-grid-tile>
-      <div>
+    <!-- <mat-grid-list cols="2">
+      <mat-grid-tile> -->
+      <div style="float: left;">
         <!--<mat-card>
           <mat-card-header>
             <mat-card-title>Compra</mat-card-title>
@@ -80,19 +80,28 @@
           </mat-card-header>
           <mat-card-content>-->
             <div>
-            <mat-form-field>
-              <mat-select placeholder="Filial Compra" name="filialCompra" id="filialCompra">
-                <mat-option value="GO">GO</mat-option>
-                <mat-option value="MG">MG</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-select placeholder="Atividade Compra" name="tipoAtividadeCompra" id="tipoAtividadeCompra" formControlName="tipoAtividadeCompra">
-                <mat-option value="PROD">PRODUÇÃO</mat-option>
-                <mat-option value="COOPERATIVA">COOPERATIVA</mat-option>
-                <mat-option value="CEREALISTA">CEREALISTA</mat-option>
-              </mat-select>
-            </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Estado Saída" name="estadoSaida" id="estadoSaida">
+                  <mat-option value="DF">DF</mat-option>
+                  <mat-option value="GO">GO</mat-option>
+                  <mat-option value="MG">MG</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-select placeholder="Filial Compra" name="filialCompra" id="filialCompra">
+                  <mat-option value="GO">GO</mat-option>
+                  <mat-option value="MG">MG</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Atividade Compra" name="tipoAtividadeCompra" id="tipoAtividadeCompra" formControlName="tipoAtividadeCompra">
+                  <mat-option value="PROD">PRODUTOR</mat-option>
+                  <mat-option value="COOPERATIVA">COOPERATIVA</mat-option>
+                  <mat-option value="CEREALISTA">CEREALISTA</mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
             <div>
               <span>
@@ -144,7 +153,7 @@
             <div>
               <mat-form-field>
                 <mat-select placeholder="Empresa" name="empresa" id="empresa" formControlName="empresa">
-                  <mat-option *ngFor="let empresa of empresas;" value="{{empresa}}">{{empresa}}</mat-option>
+                  <mat-option *ngFor="let empr of empresas;" value="{{empr}}">{{empr}}</mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field>
@@ -199,9 +208,10 @@
           <!--</mat-card-content>
         </mat-card>-->
       </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div>
+      <!-- </mat-grid-tile>
+      <mat-grid-tile> -->
+          <div style="float: right;"><mat-divider [vertical]="true"></mat-divider></div>
+        <div style="float: right;">
           <!--<mat-card>
               <mat-card-header>
                 <mat-card-title>Vendedor</mat-card-title>
@@ -219,7 +229,7 @@
             <mat-card-content>-->
               <div>
                 <mat-form-field>
-                  <mat-select placeholder="Filial Venda" name="filialVenda" id="filialVenda">
+                  <mat-select placeholder="Estado Cliente" name="estadoCliente" id="estadoCliente">
                     <mat-option value="GO">GO</mat-option>
                     <mat-option value="MG">MG</mat-option>
                     <mat-option value="PR">PR</mat-option>
@@ -233,11 +243,10 @@
                 </mat-form-field>
                 <mat-form-field>
                   <mat-select placeholder="Atividade Venda" name="tipoAtividadeVenda" id="tipoAtividadeVenda" formControlName="tipoAtividadeVenda">
-                    <mat-option value="PROD">PRODUÇÃO</mat-option>
+                    <mat-option value="PROD">PRODUTOR</mat-option>
                     <mat-option value="RACOES">RAÇÕES</mat-option>
                     <mat-option value="GRANJA">GRANJA</mat-option>
                     <mat-option value="HUMANO">HUMANO</mat-option>
-                    <mat-option value="EXP">EXP</mat-option>
                     <mat-option value="OUTROS">OUTROS</mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -304,6 +313,13 @@
                 </div>
                 <div>
                   <mat-form-field>
+                    <mat-select placeholder="Local Destino" name="localDestino" id="localDestino" formControlName="localDestino">
+                      <mat-option *ngFor="let localDest of locaisDestino;" value="{{localDest}}">{{localDest}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field>
                     <input matInput placeholder="Data de Pagamento" name="dataPagamentoVenda" id="dataPagamentoVenda"
                       [matDatepicker]="dataPagamentoVenda" (focus)="dataPagamentoVenda.open()" readonly>
                   </mat-form-field>
@@ -312,8 +328,9 @@
             <!--</mat-card-content>
           </mat-card>-->
         </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+        <div style="clear: both;">&nbsp;</div>
+      <!-- </mat-grid-tile>
+    </mat-grid-list> -->
 
     <mat-action-row>
       <button mat-button type="button" color="warn" (click)="prevStep()">Anterior</button>

@@ -19,6 +19,12 @@ export class PedidoComponent implements OnInit {
   public pedido:Pedido = new Pedido()
 
   empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES', 'NOBRE ALIMENTOS']
+  locaisDestino: string[] = [
+    'FOB - LUZIANIA', 'FOB - LAZA', 'FOB - UBERLANDIA', 'FOB - CEREAIS SUL', 'FOB - BOA SAFRA',
+    'FOB - ARAGUARI', 'FOB - PIRAPORA', 'FOB - ANAPOLIS', 'FOB - UBERABA', 'FOB - RIO VERDE',
+    'FOB - PORTO', 'CIF - PORTO', 'CIF - ARAGUARI', 'CIF - PIRAPORA', 'CIF - ANAPOLIS', 
+    'CIF - UBERLANDIA', 'CIF - BOA SAFRA', 'CIF - CEREAIS SUL', 'CIF - LUZIANIA', 'CIF - LAZA'
+  ]
 
   email = new FormControl('', [Validators.required, Validators.email]);
   step = 0;
