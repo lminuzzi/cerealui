@@ -19,14 +19,16 @@ export class PedidoComponent implements OnInit {
   public pedido:Pedido = new Pedido()
 
   empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES', 'NOBRE ALIMENTOS']
+
   locaisDestino: string[] = [
     'FOB - LUZIANIA', 'FOB - LAZA', 'FOB - UBERLANDIA', 'FOB - CEREAIS SUL', 'FOB - BOA SAFRA',
     'FOB - ARAGUARI', 'FOB - PIRAPORA', 'FOB - ANAPOLIS', 'FOB - UBERABA', 'FOB - RIO VERDE',
-    'FOB - PORTO', 'CIF - PORTO', 'CIF - ARAGUARI', 'CIF - PIRAPORA', 'CIF - ANAPOLIS', 
+    'FOB - PORTO', 'CIF - PORTO', 'CIF - ARAGUARI', 'CIF - PIRAPORA', 'CIF - ANAPOLIS',
     'CIF - UBERLANDIA', 'CIF - BOA SAFRA', 'CIF - CEREAIS SUL', 'CIF - LUZIANIA', 'CIF - LAZA'
   ]
 
   email = new FormControl('', [Validators.required, Validators.email]);
+
   step = 0;
 
   anoAtual = new Date().getFullYear()
@@ -63,7 +65,14 @@ export class PedidoComponent implements OnInit {
       nrSiscdb: [''],
       nrPedido: [''],
       codComprador: [''],
-      fornecedor: [{
+      banco: this.formBuilder.group({
+        titularBanco: [''],
+        cpfBanco: [''],
+        contaBanco: [''],
+        agenciaBanco: [''],
+        nomeBanco: ['']
+      }),
+      fornecedor: this.formBuilder.group({
         idFornecedor: [''],
         nomeFornecedor: [''],
         local: [''],
@@ -74,8 +83,8 @@ export class PedidoComponent implements OnInit {
         bairro: [''],
         inscEst: [''],
         tipoPessoa: ['']
-      }],
-      cliente: [{
+      }),
+      cliente: this.formBuilder.group({
         idCliente: [''],
         nomeCliente: [''],
         local: [''],
@@ -86,8 +95,8 @@ export class PedidoComponent implements OnInit {
         bairro: [''],
         inscEst: [''],
         tipoPessoa: ['']
-      }],
-      //compra: [{
+      }),
+      compra: this.formBuilder.group({
         compraCorret: [''],
         compraCorretTotal: [''],
         compraCusto: [''],
@@ -104,8 +113,11 @@ export class PedidoComponent implements OnInit {
         safra: [''],
         tipoAtividadeCompra: [''],
         possuiProRural: [''],
-      //}],
-      //venda: [{
+        periodoEntrega: [''],
+        localEmbarque: [''],
+        obsMod: ['']
+      }),
+      venda: this.formBuilder.group({
         vendaCorret: [''],
         vendaCorretTotal: [''],
         vendaCusto: [''],
@@ -115,16 +127,17 @@ export class PedidoComponent implements OnInit {
         vendaImpostos: [''],
         vendaImpostosTotal: [''],
         vendaValorReal: [''],
-        vendaValorRealTotal: [''],
         tradingRazaoNome: [''],
         tradingCidade: [''],
         tradingEstado: [''],
         tipoAtividadeVenda: [''],
-      //}],
+        destGrao: [''],
+        tpPedido: [''],
+        localDestino: ['']
+      }),
+      vendaValorRealTotal: [''],
       dataPedido: [''],
-      tpPedido: [''],
       custosAdicionais: [''],
-      destGrao: [''],
       diasDeJuros: [''],
       funrural: [''],
       funruralTotal: [''],
@@ -132,16 +145,12 @@ export class PedidoComponent implements OnInit {
       jurosTotal: [''],
       margem: [''],
       margemTotal: [''],
-      obsMod: [''],
       peso: [''],
       produto: [''],
       qtSacos: [''],
       status: [''],
       valorLiq: [''],
-      valorLiqTotal: [''],
-      periodoEntrega: [''],
-      localEmbarque: [''],
-      localDestino: ['']
+      valorLiqTotal: ['']
     });
   }
 

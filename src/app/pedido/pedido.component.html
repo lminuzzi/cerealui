@@ -28,21 +28,21 @@
         <input matInput type="number" min="1" name="qtSacos" id="qtSacos" formControlName="qtSacos" placeholder="Quantidade de Sacos (60kg)">
       </mat-form-field>
     </div>
-    <div>
+    <div formGroupName="banco">
       <mat-form-field>
-        <input matInput type="text" name="titular_banco" id="titular_banco" placeholder="Titular">
+        <input matInput type="text" name="titularBanco" formControlName="titularBanco" id="titularBanco" placeholder="Titular">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" name="cpf_banco" id="cpf_banco" placeholder="CPF">
+        <input matInput type="text" name="cpfBanco" formControlName="cpfBanco" id="cpfBanco" placeholder="CPF">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" name="agencia_banco" id="agencia_banco" placeholder="Agência">
+        <input matInput type="text" name="agenciaBanco" formControlName="agenciaBanco" id="agenciaBanco" placeholder="Agência">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" name="conta_banco" id="conta_banco" placeholder="Conta">
+        <input matInput type="text" name="contaBanco" formControlName="contaBanco" id="contaBanco" placeholder="Conta">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" name="nome_banco" id="nome_banco" placeholder="Nome do Banco">
+        <input matInput type="text" name="nomeBanco" formControlName="nomeBanco" id="nomeBanco" placeholder="Nome do Banco">
       </mat-form-field>
     </div>
     <mat-action-row>
@@ -63,7 +63,7 @@
     <div>
     <!-- <mat-grid-list cols="2">
       <mat-grid-tile> -->
-      <div style="float: left;">
+      <div style="float: left;" formGroupName="compra">
         <!--<mat-card>
           <mat-card-header>
             <mat-card-title>Compra</mat-card-title>
@@ -211,7 +211,7 @@
       <!-- </mat-grid-tile>
       <mat-grid-tile> -->
           <div style="float: right;"><mat-divider [vertical]="true"></mat-divider></div>
-        <div style="float: right;">
+        <div style="float: right;" formGroupName="venda">
           <!--<mat-card>
               <mat-card-header>
                 <mat-card-title>Vendedor</mat-card-title>
