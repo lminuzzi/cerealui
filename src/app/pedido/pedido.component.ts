@@ -138,7 +138,10 @@ export class PedidoComponent implements OnInit {
       qtSacos: [''],
       status: [''],
       valorLiq: [''],
-      valorLiqTotal: ['']
+      valorLiqTotal: [''],
+      periodoEntrega: [''],
+      localEmbarque: [''],
+      localDestino: ['']
     });
   }
 
