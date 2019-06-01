@@ -22,4 +22,9 @@ export class PedidoService {
     return '';
     //return this.http.post(this.url + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, pedido);
   }
+
+  analisarPedido(pedido: Pedido){
+    console.log(pedido)
+    return this.http.post(this.url + '/analisar?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, pedido);
+  }
 }

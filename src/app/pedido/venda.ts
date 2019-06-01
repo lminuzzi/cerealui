@@ -8,9 +8,15 @@ export class Venda {
   vendaImpostos: string;
   vendaImpostosTotal: string;
   vendaValorReal: string;
-  vendaValorRealTotal: string;
+  vendaDataPagamento: string;
+  vendaPossuiFrete: boolean;
+  vendaTipoFrete: string;
+  vendaPossuiCorretor: boolean;
   tradingRazaoNome: string;
   tradingCidade: string;
   tradingEstado: string;
   tipoAtividadeVenda: string;
+  destGrao: string;
+  tpPedido: string;
+  localDestino: ['']
 }

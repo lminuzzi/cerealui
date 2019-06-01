@@ -7,6 +7,10 @@ export class Compra {
   compraFreteTotal: string;
   compraImpostos: string;
   compraImpostosTotal: string;
+  compraDataPagamento: string;
+  compraPossuiFrete: boolean;
+  compraPossuiCorretor: boolean;
+  compraTipoFrete: string;
   nomeComprador: string;
   produtorCidade: string;
   produtorEstado: string;
@@ -14,5 +18,11 @@ export class Compra {
   empresa: string;
   safra: string;
   tipoAtividadeCompra: string;
-  possuiProRural: ['']
+  possuiProRural: boolean;
+  periodoEntrega: string;
+  localEmbarque: string;
+  estadoSaida: string;
+  filialCompra: string;
+  funrural: boolean;
+  obsMod: ['']
 }

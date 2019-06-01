@@ -2,6 +2,7 @@ import { Fornecedor } from '../fornecedor/fornecedor';
 import { Cliente } from '../cliente/cliente';
 import { Compra } from './compra';
 import { Venda } from './venda';
+import { PedidoDadoBancario } from './pedido-dado-bancario';
 
 export class Pedido {
     nrSiscdb: number;
@@ -9,20 +10,18 @@ export class Pedido {
     codComprador: number;
     fornecedor: Fornecedor;
     cliente: Cliente;
+    pedidoDadoBancario: PedidoDadoBancario;
     compra: Compra;
     venda: Venda;
+    vendaValorRealTotal: string;
     dataPedido: string;
-    tpPedido: string;
     custosAdicionais: string;
-    destGrao: string;
     diasDeJuros: string;
-    funrural: string;
     funruralTotal: string;
     juros: string;
     jurosTotal: string;
     margem: string;
     margemTotal: string;
-    obsMod: string;
     peso: string;
     produto: string;
     qtSacos: string;

@@ -27,8 +27,11 @@
       <mat-form-field>
         <input matInput type="number" min="1" name="qtSacos" id="qtSacos" formControlName="qtSacos" placeholder="Quantidade de Sacos (60kg)">
       </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" min="1" name="valorLiq" id="valorLiq" formControlName="valorLiq" placeholder="Preço do Produtor">
+      </mat-form-field>
     </div>
-    <div formGroupName="banco">
+    <div formGroupName="pedidoDadoBancario">
       <mat-form-field>
         <input matInput type="text" name="titularBanco" formControlName="titularBanco" id="titularBanco" placeholder="Titular">
       </mat-form-field>
@@ -107,10 +110,10 @@
               <span>
                 <label>Frete: </label>
                 <mat-radio-group formControlName="compraPossuiFrete">
-                  <mat-radio-button value="N" name="compraPossuiFrete" id="compraPossuiFrete_N">
+                  <mat-radio-button value="false" name="compraPossuiFrete" id="compraPossuiFrete_N">
                     Não&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
-                  <mat-radio-button value="S" name="compraPossuiFrete" id="compraPossuiFrete_S">
+                  <mat-radio-button value="true" name="compraPossuiFrete" id="compraPossuiFrete_S">
                     Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
                 </mat-radio-group>
@@ -138,10 +141,10 @@
               <span>
                 <label>Corr.: </label>
                 <mat-radio-group formControlName="compraPossuiCorretor">
-                  <mat-radio-button value="N" name="compraPossuiCorretor" id="compraPossuiCorretor_N" checked>
+                  <mat-radio-button value="false" name="compraPossuiCorretor" id="compraPossuiCorretor_N" checked>
                     Não&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
-                  <mat-radio-button value="S" name="compraPossuiCorretor" id="compraPossuiCorretor_S">
+                  <mat-radio-button value="true" name="compraPossuiCorretor" id="compraPossuiCorretor_S">
                     Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
                 </mat-radio-group>
@@ -167,10 +170,10 @@
               <span>
                 <label>Pró-Rural: </label>
                 <mat-radio-group formControlName="possuiProRural">
-                  <mat-radio-button value="N" name="possuiProRural" id="possuiProRural_N" checked >
+                  <mat-radio-button value="false" name="possuiProRural" id="possuiProRural_N">
                     Não&nbsp;
                   </mat-radio-button>
-                  <mat-radio-button value="S" name="possuiProRural" id="possuiProRural_S" >
+                  <mat-radio-button value="true" name="possuiProRural" id="possuiProRural_S" >
                     Sim&nbsp;&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
                 </mat-radio-group>
@@ -178,10 +181,10 @@
               <span>
                 <label>FunRural: </label>
                 <mat-radio-group formControlName="funrural">
-                  <mat-radio-button value="N" name="funrural" id="funrural_N" checked >
+                  <mat-radio-button value="false" name="funrural" id="funrural_N">
                     Não&nbsp;
                   </mat-radio-button>
-                  <mat-radio-button value="S" name="funrural" id="funrural_S" >
+                  <mat-radio-button value="true" name="funrural" id="funrural_S" >
                     Sim&nbsp;&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
                 </mat-radio-group>
@@ -255,10 +258,10 @@
                   <span>
                     <label>Frete: </label>
                     <mat-radio-group formControlName="vendaPossuiFrete">
-                      <mat-radio-button value="N" name="vendaPossuiFrete" id="vendaPossuiFrete_N" checked>
+                      <mat-radio-button value="false" name="vendaPossuiFrete" id="vendaPossuiFrete_N" checked>
                         Não&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
-                      <mat-radio-button value="S" name="vendaPossuiFrete" id="vendaPossuiFrete_S">
+                      <mat-radio-button value="true" name="vendaPossuiFrete" id="vendaPossuiFrete_S">
                         Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
                     </mat-radio-group>
@@ -284,10 +287,10 @@
                   <span>
                     <label>Corr.: </label>
                     <mat-radio-group formControlName="vendaPossuiCorretor">
-                      <mat-radio-button value="N" name="vendaPossuiCorretor" id="vendaPossuiCorretor_N" checked >
+                      <mat-radio-button value="false" name="vendaPossuiCorretor" id="vendaPossuiCorretor_N" checked >
                         Não&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
-                      <mat-radio-button value="S" name="vendaPossuiCorretor" id="vendaPossuiCorretor_S" >
+                      <mat-radio-button value="true" name="vendaPossuiCorretor" id="vendaPossuiCorretor_S" >
                         Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
                     </mat-radio-group>
@@ -358,10 +361,8 @@
             <mat-card-subtitle>Análise da Compra</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <mat-form-field>
-              <input matInput placeholder="Valor Líquido" name="valorLiq" id="valorLiq">
-            </mat-form-field>
-            <br/>ICMS: <br/>
+            Valor Líquido: {{pedido.valorLiq}}<br/>
+            ICMS: <br/>
             Funrural: <br/>
             Senar: <br/>
             PAT: <br/>

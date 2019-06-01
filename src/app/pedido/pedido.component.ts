@@ -65,7 +65,7 @@ export class PedidoComponent implements OnInit {
       nrSiscdb: [''],
       nrPedido: [''],
       codComprador: [''],
-      banco: this.formBuilder.group({
+      pedidoDadoBancario: this.formBuilder.group({
         titularBanco: [''],
         cpfBanco: [''],
         contaBanco: [''],
@@ -106,8 +106,8 @@ export class PedidoComponent implements OnInit {
         compraImpostos: [''],
         compraImpostosTotal: [''],
         compraDataPagamento: [''],
-        compraPossuiFrete: ['N'],
-        compraPossuiCorretor: ['N'],
+        compraPossuiFrete: [false],
+        compraPossuiCorretor: [false],
         compraTipoFrete: ['PF'],
         nomeComprador: [''],
         produtorCidade: [''],
@@ -116,12 +116,12 @@ export class PedidoComponent implements OnInit {
         empresa: [''],
         safra: [''],
         tipoAtividadeCompra: [''],
-        possuiProRural: [''],
+        possuiProRural: [false],
         periodoEntrega: [''],
         localEmbarque: [''],
         estadoSaida: [''],
         filialCompra: [''],
-        funrural: [''],
+        funrural: [false],
         obsMod: ['']
       }),
       venda: this.formBuilder.group({
@@ -135,9 +135,9 @@ export class PedidoComponent implements OnInit {
         vendaImpostosTotal: [''],
         vendaValorReal: [''],
         vendaDataPagamento: [''],
-        vendaPossuiFrete: ['N'],
+        vendaPossuiFrete: [false],
         vendaTipoFrete: ['PF'],
-        vendaPossuiCorretor: ['N'],
+        vendaPossuiCorretor: [false],
         tradingRazaoNome: [''],
         tradingCidade: [''],
         tradingEstado: [''],
@@ -165,7 +165,10 @@ export class PedidoComponent implements OnInit {
   }
 
   public analisarPedido() {
-    console.log(this.formPedido.value)
+    this.pedidoService.analisarPedido(this.formPedido.value)
+      .subscribe( data => {
+        console.log('***** retorno data = ' + JSON.stringify(data));
+      });
   }
 
   onSubmit() {
