@@ -28,4 +28,5 @@ export class Pedido {
     status: string;
     valorLiq: string;
     valorLiqTotal: string;
+    valorVenda: string;
 }

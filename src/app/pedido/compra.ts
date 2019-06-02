@@ -21,7 +21,6 @@ export class Compra {
   possuiProRural: boolean;
   periodoEntrega: string;
   localEmbarque: string;
-  estadoSaida: string;
   filialCompra: string;
   funrural: boolean;
   obsMod: ['']

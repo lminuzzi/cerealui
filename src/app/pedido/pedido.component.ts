@@ -119,7 +119,6 @@ export class PedidoComponent implements OnInit {
         possuiProRural: [false],
         periodoEntrega: [''],
         localEmbarque: [''],
-        estadoSaida: [''],
         filialCompra: [''],
         funrural: [false],
         obsMod: ['']
@@ -143,8 +142,7 @@ export class PedidoComponent implements OnInit {
         tradingEstado: [''],
         tipoAtividadeVenda: [''],
         destGrao: [''],
-        tpPedido: [''],
-        localDestino: ['']
+        tpPedido: ['']
       }),
       vendaValorRealTotal: [''],
       dataPedido: [''],
@@ -160,7 +158,8 @@ export class PedidoComponent implements OnInit {
       qtSacos: [''],
       status: [''],
       valorLiq: [''],
-      valorLiqTotal: ['']
+      valorLiqTotal: [''],
+      valorVenda: ['']
     });
   }
 

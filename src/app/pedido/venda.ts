@@ -18,5 +18,4 @@ export class Venda {
   tipoAtividadeVenda: string;
   destGrao: string;
   tpPedido: string;
-  localDestino: ['']
 }

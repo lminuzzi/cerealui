@@ -25,10 +25,13 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="number" min="1" name="qtSacos" id="qtSacos" formControlName="qtSacos" placeholder="Quantidade de Sacos (60kg)">
+        <input matInput type="number" min="1" name="qtSacos" id="qtSacos" formControlName="qtSacos" placeholder="Quantidade (kg)">
       </mat-form-field>
       <mat-form-field>
         <input matInput type="number" min="1" name="valorLiq" id="valorLiq" formControlName="valorLiq" placeholder="Preço do Produtor">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" min="1" name="valorVenda" id="valorVenda" formControlName="valorVenda" placeholder="Preço de Venda">
       </mat-form-field>
     </div>
     <div formGroupName="pedidoDadoBancario">
@@ -84,7 +87,7 @@
           <mat-card-content>-->
             <div>
               <mat-form-field>
-                <mat-select placeholder="Estado Saída" name="estadoSaida" id="estadoSaida" formControlName="estadoSaida">
+                <mat-select placeholder="Estado Saída" name="produtorEstado" id="produtorEstado" formControlName="produtorEstado">
                   <mat-option value="DF">DF</mat-option>
                   <mat-option value="GO">GO</mat-option>
                   <mat-option value="MG">MG</mat-option>
@@ -321,7 +324,7 @@
                   </mat-form-field>
                   <mat-datepicker #vendaDataPagamento></mat-datepicker>
                   <mat-form-field>
-                    <mat-select placeholder="Local Destino" name="localDestino" id="localDestino" formControlName="localDestino">
+                    <mat-select placeholder="Local Destino" name="tradingEstado" id="tradingEstado" formControlName="tradingEstado">
                       <mat-option *ngFor="let localDest of locaisDestino;" value="{{localDest}}">{{localDest}}</mat-option>
                     </mat-select>
                   </mat-form-field>
