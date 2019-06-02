@@ -1,0 +1,31 @@
+<div style="float: left;">
+  <h2>Compra</h2><br/>
+  Valor Líquido: {{ pedido.valorLiq }}<br/>
+  ICMS: {{ pedido.compra.valorIcmsProdutor }}<br/>
+  Funrural: {{ pedido.compra.valorFunRural }}<br/>
+  Senar: {{ pedido.compra.valorSenar }}<br/>
+  PAT: {{ pedido.compra.valorPat }}<br/>
+  Valor Bruto: {{ pedido.compra.valorBrutoCompra }}<br/>
+  Frete: {{ pedido.compra.compraFreteTotal }}<br/>
+  Imposto sob Frete: <br/>
+  Corretagem: {{ pedido.compra.compraCorretTotal }}<br/>
+  Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
+</div>
+<div style="float: left; padding-left: 20%;">
+  <h2>Venda</h2><br/>
+  Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
+  Frete: {{ pedido.venda.vendaFreteTotal }}<br/>
+  Imposto sob Frete: <br/>
+  Corretagem: {{ pedido.venda.vendaCorretTotal }}<br/>
+  ICMS: {{ pedido.venda.vendaValorIcms }}<br/>
+  PIS e COFINS: {{ pedido.venda.vendaValorPisECofins }}<br/>
+  Valor Final com Impostos: {{ pedido.venda.vendaCustoTotal }}<br/>
+</div>
+<div style="float: right;">
+  <h2>Margem</h2><br/>
+  Preço de Venda (à Vista): <br/>
+  Custo Total: {{ pedido.venda.vendaCustoTotal }}<br/>
+  Margem Total: {{ pedido.margemTotal }}<br/>
+  %Margem: {{ pedido.margem }}<br/>
+</div>
+<div style="clear: both;">&nbsp;</div>

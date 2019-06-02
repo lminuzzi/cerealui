@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../user';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { DialogConfirmComponent } from 'src/app/dialog-confirm/dialog-confirm.component';
 
 export interface PeriodicElement {
   name: string;
@@ -37,7 +38,7 @@ export class ListUserComponent implements OnInit {
   displayedColumns: string[] = ['username', 'perfil', 'acao'];
   dataSource;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
     if(!window.sessionStorage.getItem('token')) {
@@ -62,6 +63,19 @@ export class ListUserComponent implements OnInit {
         this.users = this.users.filter(u => u !== user);
         this.dataSource = new MatTableDataSource(this.users);
       })
+  };
+
+  confirmDeleteUser(user: User): void {
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+      }
+    });
   };
 
   editUser(user: User): void {

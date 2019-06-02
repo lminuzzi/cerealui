@@ -356,8 +356,8 @@
     <div style="text-align: center">
         <button type="button" mat-raised-button color="primary" (click)="analisarPedido()">Analisar</button>
     </div><br/>
-    <div>
-      <div style="float: left;">
+    <div *ngIf="pedido.compra != ''">
+      <div style="float: left;" *ngIf="pedido.compra != null">
         <h2>Compra</h2><br/>
         Valor Líquido: {{ pedido.valorLiq }}<br/>
         ICMS: {{ pedido.compra.valorIcmsProdutor }}<br/>
@@ -370,7 +370,7 @@
         Corretagem: {{ pedido.compra.compraCorretTotal }}<br/>
         Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
       </div>
-      <div style="float: left; padding-left: 20%;">
+      <div style="float: left; padding-left: 20%;" *ngIf="pedido.compra != null && pedido.venda != null">
         <h2>Venda</h2><br/>
         Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
         Frete: {{ pedido.venda.vendaFreteTotal }}<br/>
@@ -380,7 +380,7 @@
         PIS e COFINS: {{ pedido.venda.vendaValorPisECofins }}<br/>
         Valor Final com Impostos: {{ pedido.venda.vendaCustoTotal }}<br/>
       </div>
-      <div style="float: right;">
+      <div style="float: right;" *ngIf="pedido.venda != null">
         <h2>Margem</h2><br/>
         Preço de Venda (à Vista): <br/>
         Custo Total: {{ pedido.venda.vendaCustoTotal }}<br/>

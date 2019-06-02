@@ -19,6 +19,8 @@ import { AddUserComponent } from './user/add-user/add-user.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { ListUserComponent } from './user/list-user/list-user.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { PedidoAnaliseComponent } from './pedido/pedido-analise/pedido-analise.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     ClienteComponent,
     AddUserComponent,
     EditUserComponent,
-    ListUserComponent
+    ListUserComponent,
+    DialogConfirmComponent,
+    PedidoAnaliseComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,9 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     FlexLayoutModule,
     HttpClientModule,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    DialogConfirmComponent
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},

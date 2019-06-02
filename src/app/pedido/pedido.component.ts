@@ -29,7 +29,7 @@ export class PedidoComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  step = 2;
+  step = 0;
 
   anoAtual = new Date().getFullYear()
   safraValorInicial = (this.anoAtual-1) + "/" + this.anoAtual
@@ -55,12 +55,12 @@ export class PedidoComponent implements OnInit {
 
   ngOnInit() {
     //TODO retirar comentário
-    /*
+
     if(!window.sessionStorage.getItem('token')) {
       this.router.navigate(['login']);
       return;
     }
-    */
+
     this.formPedido = this.formBuilder.group({
       nrSiscdb: [''],
       nrPedido: [''],
@@ -122,7 +122,6 @@ export class PedidoComponent implements OnInit {
         filialCompra: [''],
         funrural: [false],
         obsMod: [''],
-        valorIcmsProdutor: [''],
         valorFunRural: [''],
         valorSenar: [''],
         valorPat: [''],
@@ -168,7 +167,7 @@ export class PedidoComponent implements OnInit {
       valorVenda: ['']
     });
 
-    this.analisarPedido();
+    //this.analisarPedido();
   }
 
   public analisarPedido() {
