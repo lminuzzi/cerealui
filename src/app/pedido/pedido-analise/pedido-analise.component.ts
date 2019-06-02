@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pedido } from '../pedido';
 
 @Component({
   selector: 'app-pedido-analise',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pedido-analise.component.css']
 })
 export class PedidoAnaliseComponent implements OnInit {
+  public pedido:Pedido = new Pedido()
 
   constructor() { }
 

@@ -67,13 +67,13 @@ export class ListUserComponent implements OnInit {
 
   confirmDeleteUser(user: User): void {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
-      width: '250px',
+      width: '350px',
+      data: "Tem certeza que deseja excluir esse registro?"
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        console.log('Yes clicked');
-        // DO SOMETHING
+        this.deleteUser(user);
       }
     });
   };
