@@ -127,10 +127,10 @@
                 <span>
                   <label>Tipo Frete: </label>
                   <mat-radio-group formControlName="compraTipoFrete">
-                    <mat-radio-button value="PF" name="compraTipoFrete" id="compraTipoFrete_PF">
+                    <mat-radio-button value="PESSOA_FISICA" name="compraTipoFrete" id="compraTipoFrete_PF">
                       PF&nbsp;
                     </mat-radio-button>
-                    <mat-radio-button value="PJ" name="compraTipoFrete" id="compraTipoFrete_PJ">
+                    <mat-radio-button value="PESSOA_JURIDICA" name="compraTipoFrete" id="compraTipoFrete_PJ">
                       PJ&nbsp;&nbsp;&nbsp;&nbsp;
                     </mat-radio-button>
                   </mat-radio-group>
@@ -144,7 +144,7 @@
               <span>
                 <label>Corr.: </label>
                 <mat-radio-group formControlName="compraPossuiCorretor">
-                  <mat-radio-button value="false" name="compraPossuiCorretor" id="compraPossuiCorretor_N" checked>
+                  <mat-radio-button value="false" name="compraPossuiCorretor" id="compraPossuiCorretor_N">
                     Não&nbsp;&nbsp;&nbsp;
                   </mat-radio-button>
                   <mat-radio-button value="true" name="compraPossuiCorretor" id="compraPossuiCorretor_S">
@@ -235,7 +235,7 @@
             <mat-card-content>-->
               <div>
                 <mat-form-field>
-                  <mat-select placeholder="Estado Cliente" name="estadoCliente" id="estadoCliente">
+                  <mat-select placeholder="Estado Cliente" name="estadoCliente" id="estadoCliente" formControlName="estadoCliente">
                     <mat-option value="GO">GO</mat-option>
                     <mat-option value="MG">MG</mat-option>
                     <mat-option value="PR">PR</mat-option>
@@ -261,7 +261,7 @@
                   <span>
                     <label>Frete: </label>
                     <mat-radio-group formControlName="vendaPossuiFrete">
-                      <mat-radio-button value="false" name="vendaPossuiFrete" id="vendaPossuiFrete_N" checked>
+                      <mat-radio-button value="false" name="vendaPossuiFrete" id="vendaPossuiFrete_N">
                         Não&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
                       <mat-radio-button value="true" name="vendaPossuiFrete" id="vendaPossuiFrete_S">
@@ -274,10 +274,10 @@
                   <span>
                     <label>Tipo Frete: </label>
                     <mat-radio-group formControlName="vendaTipoFrete">
-                      <mat-radio-button value="PF" name="vendaTipoFrete" id="vendaTipoFrete_PF" checked >
+                      <mat-radio-button value="PESSOA_FISICA" name="vendaTipoFrete" id="vendaTipoFrete_PF">
                         PF&nbsp;
                       </mat-radio-button>
-                      <mat-radio-button value="PJ" name="vendaTipoFrete" id="vendaTipoFrete_PJ" >
+                      <mat-radio-button value="PESSOA_JURIDICA" name="vendaTipoFrete" id="vendaTipoFrete_PJ">
                         PJ&nbsp;&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
                     </mat-radio-group>
@@ -290,7 +290,7 @@
                   <span>
                     <label>Corr.: </label>
                     <mat-radio-group formControlName="vendaPossuiCorretor">
-                      <mat-radio-button value="false" name="vendaPossuiCorretor" id="vendaPossuiCorretor_N" checked >
+                      <mat-radio-button value="false" name="vendaPossuiCorretor" id="vendaPossuiCorretor_N">
                         Não&nbsp;&nbsp;&nbsp;
                       </mat-radio-button>
                       <mat-radio-button value="true" name="vendaPossuiCorretor" id="vendaPossuiCorretor_S" >
@@ -371,7 +371,7 @@
         Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
       </div>
       <div style="float: left; padding-left: 20%;">
-        <h2>Venda</h2>
+        <h2>Venda</h2><br/>
         Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
         Frete: {{ pedido.venda.vendaFreteTotal }}<br/>
         Imposto sob Frete: <br/>
@@ -381,7 +381,7 @@
         Valor Final com Impostos: {{ pedido.venda.vendaCustoTotal }}<br/>
       </div>
       <div style="float: right;">
-        <h2>Margem</h2>
+        <h2>Margem</h2><br/>
         Preço de Venda (à Vista): <br/>
         Custo Total: {{ pedido.venda.vendaCustoTotal }}<br/>
         Margem Total: {{ pedido.margemTotal }}<br/>
