@@ -23,5 +23,10 @@ export class Compra {
   localEmbarque: string;
   filialCompra: string;
   funrural: boolean;
-  obsMod: ['']
+  obsMod: string;
+  valorIcmsProdutor: number;
+  valorFunRural: number;
+  valorSenar: number;
+  valorPat: number;
+  valorBrutoCompra: number;
 }

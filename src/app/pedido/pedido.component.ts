@@ -29,7 +29,7 @@ export class PedidoComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  step = 0;
+  step = 2;
 
   anoAtual = new Date().getFullYear()
   safraValorInicial = (this.anoAtual-1) + "/" + this.anoAtual
@@ -121,7 +121,12 @@ export class PedidoComponent implements OnInit {
         localEmbarque: [''],
         filialCompra: [''],
         funrural: [false],
-        obsMod: ['']
+        obsMod: [''],
+        valorIcmsProdutor: [''],
+        valorFunRural: [''],
+        valorSenar: [''],
+        valorPat: [''],
+        valorBrutoCompra: ['']
       }),
       venda: this.formBuilder.group({
         vendaCorret: [''],
@@ -161,17 +166,20 @@ export class PedidoComponent implements OnInit {
       valorLiqTotal: [''],
       valorVenda: ['']
     });
+
+    this.analisarPedido();
   }
 
   public analisarPedido() {
     this.pedidoService.analisarPedido(this.formPedido.value)
       .subscribe( data => {
         console.log('***** retorno data = ' + JSON.stringify(data));
+        this.pedido = data
       });
   }
 
   onSubmit() {
-    alert('submit')
+    //alert('submit')
     this.pedidoService.createPedido(this.formPedido.value);
     /*
     this.pedidoService.createPedido(this.formPedido.value)
