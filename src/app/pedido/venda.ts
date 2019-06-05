@@ -12,6 +12,8 @@ export class Venda {
   vendaPossuiFrete: boolean;
   vendaTipoFrete: string;
   vendaPossuiCorretor: boolean;
+  vendaValorIcms: number;
+  vendaValorPisECofins: number;
   tradingRazaoNome: string;
   tradingCidade: string;
   tradingEstado: string;

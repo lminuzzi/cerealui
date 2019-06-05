@@ -69,6 +69,11 @@
     <div>
     <!-- <mat-grid-list cols="2">
       <mat-grid-tile> -->
+      
+      <div formGroupName="fornecedor">
+        <input type="hidden" name="idFornecedor" id="idFornecedor" formControlName="idFornecedor">
+      </div>
+      
       <div style="float: left;" formGroupName="compra">
         <!--<mat-card>
           <mat-card-header>
@@ -76,7 +81,8 @@
             <mat-card-subtitle>Informações do Comprador</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>-->
-            <app-fornecedor></app-fornecedor>
+          
+            <app-fornecedor (fornecedorSelected)="onFornecedorSelected($event)"></app-fornecedor>
           <!--</mat-card-content>
         </mat-card>
         <mat-card>
@@ -217,6 +223,9 @@
       <!-- </mat-grid-tile>
       <mat-grid-tile> -->
         <div style="float: right;"><mat-divider [vertical]="true"></mat-divider></div>
+        <div formGroupName="cliente">
+          <input type="hidden" name="idCliente" id="idCliente" formControlName="idCliente">
+        </div>
         <div style="float: right;" formGroupName="venda">
           <!--<mat-card>
               <mat-card-header>
@@ -224,7 +233,7 @@
                 <mat-card-subtitle>Informações do Vendedor</mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>-->
-                <app-cliente></app-cliente>
+                <app-cliente (clienteSelected)="onClienteSelected($event)"></app-cliente>
               <!--</mat-card-content>
           </mat-card>
           <mat-card>
@@ -247,6 +256,19 @@
                     <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
                   </mat-select>
                 </mat-form-field>
+                <mat-form-field>
+                  <mat-select placeholder="Filiar Venda" name="tradingEstado" id="tradingEstado" formControlName="tradingEstado">
+                    <mat-option value="GO">GO</mat-option>
+                    <mat-option value="MG">MG</mat-option>
+                    <mat-option value="PR">PR</mat-option>
+                    <mat-option value="RS">RS</mat-option>
+                    <mat-option value="RJ">RJ</mat-option>
+                    <mat-option value="SC">SC</mat-option>
+                    <mat-option value="SP">SP</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div>
                 <mat-form-field>
                   <mat-select placeholder="Atividade Venda" name="tipoAtividadeVenda" id="tipoAtividadeVenda" formControlName="tipoAtividadeVenda">
                     <mat-option value="PROD">PRODUTOR</mat-option>
@@ -324,7 +346,7 @@
                   </mat-form-field>
                   <mat-datepicker #vendaDataPagamento></mat-datepicker>
                   <mat-form-field>
-                    <mat-select placeholder="Local Destino" name="tradingEstado" id="tradingEstado" formControlName="tradingEstado">
+                    <mat-select placeholder="Local Destino" name="localDestino" id="localDestino" formControlName="localDestino">
                       <mat-option *ngFor="let localDest of locaisDestino;" value="{{localDest}}">{{localDest}}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -356,7 +378,7 @@
     <div style="text-align: center">
         <button type="button" mat-raised-button color="primary" (click)="analisarPedido()">Analisar</button>
     </div><br/>
-    <div *ngIf="pedido.compra != ''">
+    <div *ngIf="pedido.compra != null">
       <div style="float: left;" *ngIf="pedido.compra != null">
         <h2>Compra</h2><br/>
         Valor Líquido: {{ pedido.valorLiq }}<br/>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FornecedorService } from './fornecedor.service';
 import { Fornecedor } from './fornecedor';
 import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
@@ -18,9 +18,12 @@ export class FornecedorComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   mostrarDetalhesFornecedor = false;
   public buscaForm: FormGroup
+  
+  @Output() fornecedorSelected: EventEmitter<number>;
 
   constructor(private fornecedorService:FornecedorService, private formBuilder: FormBuilder) {
     this.fornecedorCtrl = new FormControl();
+    this.fornecedorSelected = new EventEmitter();
   }
 
   ngOnInit() {
@@ -70,10 +73,9 @@ export class FornecedorComponent implements OnInit {
   }
 
   public getFornecedorById(value: string) {
-    console.log(value)
     const idFornec: number = this.parseId(value);
-    console.log("idFornec: "+idFornec)
     this.fornecedor = this.fornecedores.filter(val => val.idFornecedor == idFornec)[0]
+    this.fornecedorSelected.emit(idFornec);
     this.mostrarDetalhesFornecedor = true;
   }
 

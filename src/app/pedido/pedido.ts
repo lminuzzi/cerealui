@@ -29,4 +29,5 @@ export class Pedido {
     valorLiq: string;
     valorLiqTotal: string;
     valorVenda: string;
+    localDestino: string;
 }

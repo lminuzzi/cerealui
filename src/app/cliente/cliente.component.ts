@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Cliente } from './cliente';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -20,8 +20,11 @@ export class ClienteComponent implements OnInit {
   mostrarDetalhesCliente = false;
   public buscaForm: FormGroup
 
+  @Output() clienteSelected: EventEmitter<number>;
+
   constructor(private clienteService:ClienteService, private formBuilder: FormBuilder) {
     this.clienteCtrl = new FormControl();
+    this.clienteSelected = new EventEmitter();
   }
 
   ngOnInit() {
@@ -73,6 +76,7 @@ export class ClienteComponent implements OnInit {
   public getClienteById(value: string) {
     const idCli: number = this.parseId(value);
     this.cliente = this.clientes.filter(val => val.idCliente == idCli)[0]
+    this.clienteSelected.emit(idCli);
     this.mostrarDetalhesCliente = true;
   }
 

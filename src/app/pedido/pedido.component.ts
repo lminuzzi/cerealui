@@ -106,8 +106,8 @@ export class PedidoComponent implements OnInit {
         compraImpostos: [''],
         compraImpostosTotal: [''],
         compraDataPagamento: [''],
-        compraPossuiFrete: [false],
-        compraPossuiCorretor: [false],
+        compraPossuiFrete: ['false'],
+        compraPossuiCorretor: ['false'],
         compraTipoFrete: ['PESSOA_FISICA'],
         nomeComprador: [''],
         produtorCidade: [''],
@@ -116,11 +116,11 @@ export class PedidoComponent implements OnInit {
         empresa: [''],
         safra: [''],
         tipoAtividadeCompra: [''],
-        possuiProRural: [false],
+        possuiProRural: ['false'],
         periodoEntrega: [''],
         localEmbarque: [''],
         filialCompra: [''],
-        funrural: [false],
+        funrural: ['false'],
         obsMod: [''],
         valorFunRural: [''],
         valorSenar: [''],
@@ -138,16 +138,17 @@ export class PedidoComponent implements OnInit {
         vendaImpostosTotal: [''],
         vendaValorReal: [''],
         vendaDataPagamento: [''],
-        vendaPossuiFrete: [false],
+        vendaPossuiFrete: ['false'],
         vendaTipoFrete: ['PESSOA_FISICA'],
-        vendaPossuiCorretor: [false],
+        vendaPossuiCorretor: ['false'],
         tradingRazaoNome: [''],
         tradingCidade: [''],
         tradingEstado: [''],
         tipoAtividadeVenda: [''],
         destGrao: [''],
         tpPedido: [''],
-        estadoCliente: ['']
+        estadoCliente: [''],
+        localDestino: ['']
       }),
       vendaValorRealTotal: [''],
       dataPedido: [''],
@@ -174,8 +175,16 @@ export class PedidoComponent implements OnInit {
     this.pedidoService.analisarPedido(this.formPedido.value)
       .subscribe( data => {
         console.log('***** retorno data = ' + JSON.stringify(data));
-        this.pedido = data
+        this.pedido = data;
       });
+  }
+
+  onFornecedorSelected(idFornecedorParam: number) {
+    this.formPedido.value.fornecedor.idFornecedor = idFornecedorParam;
+  }
+
+  onClienteSelected(idClienteParam: number) {
+    this.formPedido.value.cliente.idCliente = idClienteParam;
   }
 
   onSubmit() {
