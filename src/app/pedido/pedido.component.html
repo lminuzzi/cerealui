@@ -69,11 +69,11 @@
     <div>
     <!-- <mat-grid-list cols="2">
       <mat-grid-tile> -->
-      
+
       <div formGroupName="fornecedor">
         <input type="hidden" name="idFornecedor" id="idFornecedor" formControlName="idFornecedor">
       </div>
-      
+
       <div style="float: left;" formGroupName="compra">
         <!--<mat-card>
           <mat-card-header>
@@ -81,7 +81,7 @@
             <mat-card-subtitle>Informações do Comprador</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>-->
-          
+
             <app-fornecedor (fornecedorSelected)="onFornecedorSelected($event)"></app-fornecedor>
           <!--</mat-card-content>
         </mat-card>
@@ -257,19 +257,6 @@
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field>
-                  <mat-select placeholder="Filiar Venda" name="tradingEstado" id="tradingEstado" formControlName="tradingEstado">
-                    <mat-option value="GO">GO</mat-option>
-                    <mat-option value="MG">MG</mat-option>
-                    <mat-option value="PR">PR</mat-option>
-                    <mat-option value="RS">RS</mat-option>
-                    <mat-option value="RJ">RJ</mat-option>
-                    <mat-option value="SC">SC</mat-option>
-                    <mat-option value="SP">SP</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-              <div>
-                <mat-form-field>
                   <mat-select placeholder="Atividade Venda" name="tipoAtividadeVenda" id="tipoAtividadeVenda" formControlName="tipoAtividadeVenda">
                     <mat-option value="PROD">PRODUTOR</mat-option>
                     <mat-option value="RACOES">RAÇÕES</mat-option>
@@ -388,7 +375,6 @@
         PAT: {{ pedido.compra.valorPat }}<br/>
         Valor Bruto: {{ pedido.compra.valorBrutoCompra }}<br/>
         Frete: {{ pedido.compra.compraFreteTotal }}<br/>
-        Imposto sob Frete: <br/>
         Corretagem: {{ pedido.compra.compraCorretTotal }}<br/>
         Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
       </div>
@@ -396,7 +382,6 @@
         <h2>Venda</h2><br/>
         Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
         Frete: {{ pedido.venda.vendaFreteTotal }}<br/>
-        Imposto sob Frete: <br/>
         Corretagem: {{ pedido.venda.vendaCorretTotal }}<br/>
         ICMS: {{ pedido.venda.vendaValorIcms }}<br/>
         PIS e COFINS: {{ pedido.venda.vendaValorPisECofins }}<br/>
@@ -404,7 +389,7 @@
       </div>
       <div style="float: right;" *ngIf="pedido.venda != null">
         <h2>Margem</h2><br/>
-        Preço de Venda (à Vista): <br/>
+        Preço de Venda (à Vista): {{pedido.valorVenda}} <br/>
         Custo Total: {{ pedido.venda.vendaCustoTotal }}<br/>
         Margem Total: {{ pedido.margemTotal }}<br/>
         %Margem: {{ pedido.margem }}<br/>
