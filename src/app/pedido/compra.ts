@@ -23,7 +23,6 @@ export class Compra {
   localEmbarque: string;
   filialCompra: string;
   funrural: boolean;
-  obsMod: string;
   valorIcmsProdutor: number;
   valorFunRural: number;
   valorSenar: number;

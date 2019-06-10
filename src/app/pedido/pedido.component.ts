@@ -3,6 +3,8 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import { Pedido } from './pedido';
 import { PedidoService } from './pedido.service';
 import { Router } from '@angular/router';
+import { Fornecedor } from '../fornecedor/fornecedor';
+import { provideLocationStrategy } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-pedido',
@@ -17,8 +19,13 @@ export class PedidoComponent implements OnInit {
 
   public formPedido: FormGroup
   public pedido:Pedido = new Pedido()
+  public fornecedor:Fornecedor = new Fornecedor()
 
   empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES', 'NOBRE ALIMENTOS']
+
+  produtorEstados: string[] = ['DF', 'GO', 'MG']
+
+  prodEst;
 
   locaisDestino: string[] = [
     'FOB - LUZIANIA', 'FOB - LAZA', 'FOB - UBERLANDIA', 'FOB - CEREAIS SUL', 'FOB - BOA SAFRA',
@@ -54,26 +61,25 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit() {
-    //TODO retirar comentário
-
     if(!window.sessionStorage.getItem('token')) {
       this.router.navigate(['login']);
       return;
     }
+    this.prodEst = this.produtorEstados[1]
 
     this.formPedido = this.formBuilder.group({
       nrSiscdb: [''],
       nrPedido: [''],
       codComprador: [''],
       pedidoDadoBancario: this.formBuilder.group({
-        titularBanco: [''],
-        cpfBanco: [''],
-        contaBanco: [''],
-        agenciaBanco: [''],
-        nomeBanco: ['']
+        titularBanco: ['', [Validators.required]],
+        cpfBanco: ['', [Validators.required]],
+        contaBanco: ['', [Validators.required]],
+        agenciaBanco: ['', [Validators.required]],
+        nomeBanco: ['', [Validators.required]]
       }),
       fornecedor: this.formBuilder.group({
-        idFornecedor: [''],
+        idFornecedor: ['', [Validators.required]],
         nomeFornecedor: [''],
         local: [''],
         cpf: [''],
@@ -85,7 +91,7 @@ export class PedidoComponent implements OnInit {
         tipoPessoa: ['']
       }),
       cliente: this.formBuilder.group({
-        idCliente: [''],
+        idCliente: ['', [Validators.required]],
         nomeCliente: [''],
         local: [''],
         cpf: [''],
@@ -106,22 +112,21 @@ export class PedidoComponent implements OnInit {
         compraImpostos: [''],
         compraImpostosTotal: [''],
         compraDataPagamento: [''],
-        compraPossuiFrete: ['false'],
-        compraPossuiCorretor: ['false'],
-        compraTipoFrete: ['PESSOA_FISICA'],
+        compraPossuiFrete: ['false', [Validators.required]],
+        compraPossuiCorretor: ['false', [Validators.required]],
+        compraTipoFrete: ['PESSOA_FISICA', [Validators.required]],
         nomeComprador: [''],
         produtorCidade: [''],
         produtorEstado: [''],
         produtorRazaoNome: [''],
-        empresa: [''],
-        safra: [''],
-        tipoAtividadeCompra: [''],
-        possuiProRural: ['false'],
+        empresa: ['', [Validators.required]],
+        safra: ['', [Validators.required]],
+        tipoAtividadeCompra: ['', [Validators.required]],
+        possuiProRural: ['false', [Validators.required]],
         periodoEntrega: [''],
         localEmbarque: [''],
-        filialCompra: [''],
+        filialCompra: ['', [Validators.required]],
         funrural: ['false'],
-        obsMod: [''],
         valorFunRural: [''],
         valorSenar: [''],
         valorPat: [''],
@@ -138,16 +143,16 @@ export class PedidoComponent implements OnInit {
         vendaImpostosTotal: [''],
         vendaValorReal: [''],
         vendaDataPagamento: [''],
-        vendaPossuiFrete: ['false'],
-        vendaTipoFrete: ['PESSOA_FISICA'],
-        vendaPossuiCorretor: ['false'],
+        vendaPossuiFrete: ['false', [Validators.required]],
+        vendaTipoFrete: ['PESSOA_FISICA', [Validators.required]],
+        vendaPossuiCorretor: ['false', [Validators.required]],
         tradingRazaoNome: [''],
         tradingCidade: [''],
         tradingEstado: [''],
-        tipoAtividadeVenda: [''],
+        tipoAtividadeVenda: ['', [Validators.required]],
         destGrao: [''],
-        tpPedido: [''],
-        estadoCliente: [''],
+        tpPedido: ['', [Validators.required]],
+        estadoCliente: ['', [Validators.required]],
         localDestino: ['']
       }),
       vendaValorRealTotal: [''],
@@ -160,12 +165,12 @@ export class PedidoComponent implements OnInit {
       margem: [''],
       margemTotal: [''],
       peso: [''],
-      produto: [''],
-      qtSacos: [''],
+      produto: ['SOJA', [Validators.required]],
+      qtSacos: ['', [Validators.required]],
       status: [''],
-      valorLiq: [''],
+      valorLiq: ['', [Validators.required]],
       valorLiqTotal: [''],
-      valorVenda: ['']
+      valorVenda: ['', [Validators.required]]
     });
 
     //this.analisarPedido();
@@ -179,8 +184,10 @@ export class PedidoComponent implements OnInit {
       });
   }
 
-  onFornecedorSelected(idFornecedorParam: number) {
-    this.formPedido.value.fornecedor.idFornecedor = idFornecedorParam;
+  onFornecedorSelected(fornecedorParam: Fornecedor) {
+    this.formPedido.value.fornecedor.idFornecedor = fornecedorParam.idFornecedor;
+    this.prodEst = fornecedorParam.regiao;
+    this.fornecedor = fornecedorParam;
   }
 
   onClienteSelected(idClienteParam: number) {

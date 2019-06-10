@@ -18,8 +18,8 @@ export class FornecedorComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   mostrarDetalhesFornecedor = false;
   public buscaForm: FormGroup
-  
-  @Output() fornecedorSelected: EventEmitter<number>;
+
+  @Output() fornecedorSelected: EventEmitter<Fornecedor>;
 
   constructor(private fornecedorService:FornecedorService, private formBuilder: FormBuilder) {
     this.fornecedorCtrl = new FormControl();
@@ -75,7 +75,8 @@ export class FornecedorComponent implements OnInit {
   public getFornecedorById(value: string) {
     const idFornec: number = this.parseId(value);
     this.fornecedor = this.fornecedores.filter(val => val.idFornecedor == idFornec)[0]
-    this.fornecedorSelected.emit(idFornec);
+    //this.fornecedorSelected.emit(idFornec);
+    this.fornecedorSelected.emit(this.fornecedor);
     this.mostrarDetalhesFornecedor = true;
   }
 

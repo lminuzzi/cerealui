@@ -67,288 +67,242 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div>
-    <!-- <mat-grid-list cols="2">
-      <mat-grid-tile> -->
-
       <div formGroupName="fornecedor">
         <input type="hidden" name="idFornecedor" id="idFornecedor" formControlName="idFornecedor">
       </div>
 
       <div style="float: left;" formGroupName="compra">
-        <!--<mat-card>
-          <mat-card-header>
-            <mat-card-title>Compra</mat-card-title>
-            <mat-card-subtitle>Informações do Comprador</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>-->
-
-            <app-fornecedor (fornecedorSelected)="onFornecedorSelected($event)"></app-fornecedor>
-          <!--</mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Compra</mat-card-title>
-            <mat-card-subtitle>Informações de Compra</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>-->
-            <div>
-              <mat-form-field>
-                <mat-select placeholder="Estado Saída" name="produtorEstado" id="produtorEstado" formControlName="produtorEstado">
-                  <mat-option value="DF">DF</mat-option>
-                  <mat-option value="GO">GO</mat-option>
-                  <mat-option value="MG">MG</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <mat-select placeholder="Filial Compra" name="filialCompra" id="filialCompra" formControlName="filialCompra">
-                  <mat-option value="GO">GO</mat-option>
-                  <mat-option value="MG">MG</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Atividade Compra" name="tipoAtividadeCompra" id="tipoAtividadeCompra" formControlName="tipoAtividadeCompra">
-                  <mat-option value="PROD">PRODUTOR</mat-option>
-                  <mat-option value="COOPERATIVA">COOPERATIVA</mat-option>
-                  <mat-option value="CEREALISTA">CEREALISTA</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div>
-              <span>
-                <label>Frete: </label>
-                <mat-radio-group formControlName="compraPossuiFrete">
-                  <mat-radio-button value="false" name="compraPossuiFrete" id="compraPossuiFrete_N">
-                    Não&nbsp;&nbsp;&nbsp;
-                  </mat-radio-button>
-                  <mat-radio-button value="true" name="compraPossuiFrete" id="compraPossuiFrete_S">
-                    Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  </mat-radio-button>
-                </mat-radio-group>
-              </span>
-            </div>
-            <div>
-              <div>
-                <span>
-                  <label>Tipo Frete: </label>
-                  <mat-radio-group formControlName="compraTipoFrete">
-                    <mat-radio-button value="PESSOA_FISICA" name="compraTipoFrete" id="compraTipoFrete_PF">
-                      PF&nbsp;
-                    </mat-radio-button>
-                    <mat-radio-button value="PESSOA_JURIDICA" name="compraTipoFrete" id="compraTipoFrete_PJ">
-                      PJ&nbsp;&nbsp;&nbsp;&nbsp;
-                    </mat-radio-button>
-                  </mat-radio-group>
-                </span>
-                <mat-form-field>
-                  <input matInput type="number" min="1" name="compraFrete" id="compraFrete" placeholder="Valor do Frete/Ton" formControlName="compraFrete">
-                </mat-form-field>
-              </div>
-            </div>
-            <div>
-              <span>
-                <label>Corr.: </label>
-                <mat-radio-group formControlName="compraPossuiCorretor">
-                  <mat-radio-button value="false" name="compraPossuiCorretor" id="compraPossuiCorretor_N">
-                    Não&nbsp;&nbsp;&nbsp;
-                  </mat-radio-button>
-                  <mat-radio-button value="true" name="compraPossuiCorretor" id="compraPossuiCorretor_S">
-                    Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  </mat-radio-button>
-                </mat-radio-group>
-              </span>
-              <mat-form-field>
-                <input matInput type="number" min="1" name="compraCorret" id="compraCorret" placeholder="Valor Comissão" formControlName="compraCorret">
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <mat-select placeholder="Empresa" name="empresa" id="empresa" formControlName="empresa">
-                  <mat-option *ngFor="let empr of empresas;" value="{{empr}}">{{empr}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Safra" name="safra" id="safra" formControlName="safra">
-                  <mat-option value="{{ safraValorInicial }}">{{ safraValorInicial }}</mat-option>
-                  <mat-option value="{{ safraValorFinal }}">{{ safraValorFinal }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div>
-              <span>
-                <label>Pró-Rural: </label>
-                <mat-radio-group formControlName="possuiProRural">
-                  <mat-radio-button value="false" name="possuiProRural" id="possuiProRural_N">
-                    Não&nbsp;
-                  </mat-radio-button>
-                  <mat-radio-button value="true" name="possuiProRural" id="possuiProRural_S" >
-                    Sim&nbsp;&nbsp;&nbsp;&nbsp;
-                  </mat-radio-button>
-                </mat-radio-group>
-              </span>
-              <span>
-                <label>FunRural: </label>
-                <mat-radio-group formControlName="funrural">
-                  <mat-radio-button value="false" name="funrural" id="funrural_N">
-                    Não&nbsp;
-                  </mat-radio-button>
-                  <mat-radio-button value="true" name="funrural" id="funrural_S" >
-                    Sim&nbsp;&nbsp;&nbsp;&nbsp;
-                  </mat-radio-button>
-                </mat-radio-group>
-              </span>
-            </div>
-            <div>
-              <mat-form-field>
-                <input matInput type="text" name="periodoEntrega" id="periodoEntrega" placeholder="Período Entrega" formControlName="periodoEntrega">
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput type="text" name="localEmbarque" id="localEmbarque" placeholder="Local Embarque" formControlName="localEmbarque">
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                  <input matInput placeholder="Data de Pagamento" name="compraDataPagamento" id="compraDataPagamento" readonly
-                    [matDatepicker]="compraDataPagamento" (focus)="compraDataPagamento.open()" formControlName="compraDataPagamento">
-                </mat-form-field>
-                <mat-datepicker #compraDataPagamento></mat-datepicker>
-              <mat-form-field>
-                <textarea matInput placeholder="Observação" name="obsMod" id="obsMod" formControlName="obsMod"></textarea>
-              </mat-form-field>
-            </div>
-          <!--</mat-card-content>
-        </mat-card>-->
+        <app-fornecedor (fornecedorSelected)="onFornecedorSelected($event)"></app-fornecedor>
+        <div>
+          <mat-form-field>
+            <mat-select placeholder="Estado Saída" name="produtorEstado" id="produtorEstado" formControlName="produtorEstado">
+              <mat-option *ngFor="let prodEst of produtorEstados; let i = index;" [value]="prodEst">{{prodEst}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-select placeholder="Filial Compra" name="filialCompra" id="filialCompra" formControlName="filialCompra">
+              <mat-option value="GO">GO</mat-option>
+              <mat-option value="MG">MG</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Atividade Compra" name="tipoAtividadeCompra" id="tipoAtividadeCompra" formControlName="tipoAtividadeCompra">
+              <mat-option value="PROD">PRODUTOR</mat-option>
+              <mat-option value="COOPERATIVA">COOPERATIVA</mat-option>
+              <mat-option value="CEREALISTA">CEREALISTA</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <span>
+            <label>Frete: </label>
+            <mat-radio-group formControlName="compraPossuiFrete">
+              <mat-radio-button value="false" name="compraPossuiFrete" id="compraPossuiFrete_N">
+                Não&nbsp;&nbsp;&nbsp;
+              </mat-radio-button>
+              <mat-radio-button value="true" name="compraPossuiFrete" id="compraPossuiFrete_S">
+                Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </mat-radio-button>
+            </mat-radio-group>
+          </span>
+        </div>
+        <div>
+          <div>
+            <span>
+              <label>Tipo Frete: </label>
+              <mat-radio-group formControlName="compraTipoFrete">
+                <mat-radio-button value="PESSOA_FISICA" name="compraTipoFrete" id="compraTipoFrete_PF">
+                  PF&nbsp;
+                </mat-radio-button>
+                <mat-radio-button value="PESSOA_JURIDICA" name="compraTipoFrete" id="compraTipoFrete_PJ">
+                  PJ&nbsp;&nbsp;&nbsp;&nbsp;
+                </mat-radio-button>
+              </mat-radio-group>
+            </span>
+            <mat-form-field>
+              <input matInput type="number" min="1" name="compraFrete" id="compraFrete" placeholder="Valor do Frete/Ton" formControlName="compraFrete">
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <span>
+            <label>Corr.: </label>
+            <mat-radio-group formControlName="compraPossuiCorretor">
+              <mat-radio-button value="false" name="compraPossuiCorretor" id="compraPossuiCorretor_N">
+                Não&nbsp;&nbsp;&nbsp;
+              </mat-radio-button>
+              <mat-radio-button value="true" name="compraPossuiCorretor" id="compraPossuiCorretor_S">
+                Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </mat-radio-button>
+            </mat-radio-group>
+          </span>
+          <mat-form-field>
+            <input matInput type="number" min="1" name="compraCorret" id="compraCorret" placeholder="Valor Comissão" formControlName="compraCorret">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-select placeholder="Empresa" name="empresa" id="empresa" formControlName="empresa">
+              <mat-option *ngFor="let empr of empresas;" value="{{empr}}">{{empr}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Safra" name="safra" id="safra" formControlName="safra">
+              <mat-option value="{{ safraValorInicial }}">{{ safraValorInicial }}</mat-option>
+              <mat-option value="{{ safraValorFinal }}">{{ safraValorFinal }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <span>
+            <label>Pró-Rural: </label>
+            <mat-radio-group formControlName="possuiProRural">
+              <mat-radio-button value="false" name="possuiProRural" id="possuiProRural_N">
+                Não&nbsp;
+              </mat-radio-button>
+              <mat-radio-button value="true" name="possuiProRural" id="possuiProRural_S" >
+                Sim&nbsp;&nbsp;&nbsp;&nbsp;
+              </mat-radio-button>
+            </mat-radio-group>
+          </span>
+          <span>
+            <label>FunRural: </label>
+            <mat-radio-group formControlName="funrural">
+              <mat-radio-button value="false" name="funrural" id="funrural_N">
+                Não&nbsp;
+              </mat-radio-button>
+              <mat-radio-button value="true" name="funrural" id="funrural_S" >
+                Sim&nbsp;&nbsp;&nbsp;&nbsp;
+              </mat-radio-button>
+            </mat-radio-group>
+          </span>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" name="periodoEntrega" id="periodoEntrega" placeholder="Período Entrega" formControlName="periodoEntrega">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" name="localEmbarque" id="localEmbarque" placeholder="Local Embarque" formControlName="localEmbarque">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+              <input matInput placeholder="Data de Pagamento" name="compraDataPagamento" id="compraDataPagamento" readonly
+                [matDatepicker]="compraDataPagamento" (focus)="compraDataPagamento.open()" formControlName="compraDataPagamento">
+            </mat-form-field>
+            <mat-datepicker #compraDataPagamento></mat-datepicker>
+        </div>
       </div>
-      <!-- </mat-grid-tile>
-      <mat-grid-tile> -->
         <div style="float: right;"><mat-divider [vertical]="true"></mat-divider></div>
         <div formGroupName="cliente">
           <input type="hidden" name="idCliente" id="idCliente" formControlName="idCliente">
         </div>
         <div style="float: right;" formGroupName="venda">
-          <!--<mat-card>
-              <mat-card-header>
-                <mat-card-title>Vendedor</mat-card-title>
-                <mat-card-subtitle>Informações do Vendedor</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>-->
-                <app-cliente (clienteSelected)="onClienteSelected($event)"></app-cliente>
-              <!--</mat-card-content>
-          </mat-card>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Venda</mat-card-title>
-              <mat-card-subtitle>Informações de Venda</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>-->
-              <div>
-                <mat-form-field>
-                  <mat-select placeholder="Estado Cliente" name="estadoCliente" id="estadoCliente" formControlName="estadoCliente">
-                    <mat-option value="GO">GO</mat-option>
-                    <mat-option value="MG">MG</mat-option>
-                    <mat-option value="PR">PR</mat-option>
-                    <mat-option value="RS">RS</mat-option>
-                    <mat-option value="RJ">RJ</mat-option>
-                    <mat-option value="SC">SC</mat-option>
-                    <mat-option value="SP">SP</mat-option>
-                    <mat-option value="OUTROSESTADOS">OUTROS ESTADOS</mat-option>
-                    <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-select placeholder="Atividade Venda" name="tipoAtividadeVenda" id="tipoAtividadeVenda" formControlName="tipoAtividadeVenda">
-                    <mat-option value="PROD">PRODUTOR</mat-option>
-                    <mat-option value="RACOES">RAÇÕES</mat-option>
-                    <mat-option value="GRANJA">GRANJA</mat-option>
-                    <mat-option value="HUMANO">HUMANO</mat-option>
-                    <mat-option value="OUTROS">OUTROS</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-              <div>
-                  <span>
-                    <label>Frete: </label>
-                    <mat-radio-group formControlName="vendaPossuiFrete">
-                      <mat-radio-button value="false" name="vendaPossuiFrete" id="vendaPossuiFrete_N">
-                        Não&nbsp;&nbsp;&nbsp;
-                      </mat-radio-button>
-                      <mat-radio-button value="true" name="vendaPossuiFrete" id="vendaPossuiFrete_S">
-                        Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </mat-radio-button>
-                    </mat-radio-group>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <label>Tipo Frete: </label>
-                    <mat-radio-group formControlName="vendaTipoFrete">
-                      <mat-radio-button value="PESSOA_FISICA" name="vendaTipoFrete" id="vendaTipoFrete_PF">
-                        PF&nbsp;
-                      </mat-radio-button>
-                      <mat-radio-button value="PESSOA_JURIDICA" name="vendaTipoFrete" id="vendaTipoFrete_PJ">
-                        PJ&nbsp;&nbsp;&nbsp;&nbsp;
-                      </mat-radio-button>
-                    </mat-radio-group>
-                  </span>
-                  <mat-form-field>
-                    <input matInput type="number" min="1" name="vendaFrete" id="vendaFrete" placeholder="Valor do Frete/Ton" formControlName="vendaFrete">
-                  </mat-form-field>
-                </div>
-                <div>
-                  <span>
-                    <label>Corr.: </label>
-                    <mat-radio-group formControlName="vendaPossuiCorretor">
-                      <mat-radio-button value="false" name="vendaPossuiCorretor" id="vendaPossuiCorretor_N">
-                        Não&nbsp;&nbsp;&nbsp;
-                      </mat-radio-button>
-                      <mat-radio-button value="true" name="vendaPossuiCorretor" id="vendaPossuiCorretor_S" >
-                        Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </mat-radio-button>
-                    </mat-radio-group>
-                  </span>
-                  <mat-form-field>
-                    <input matInput type="number" min="1" name="vendaCorret" id="vendaCorret" placeholder="Valor Comissão" formControlName="vendaCorret">
-                  </mat-form-field>
-                </div>
-                <div>
-                  <mat-form-field>
-                    <mat-select placeholder="Destino Grão" name="destGrao" id="destGrao" formControlName="destGrao">
-                      <mat-option value="ESTOQUE">ESTOQUE</mat-option>
-                      <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
-                      <mat-option value="MERCADO INTERNO">MERCADO INTERNO</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-select placeholder="Tipo de Venda" name="tpPedido" id="tpPedido" formControlName="tpPedido">
-                      <mat-option value="COMERCIAL">COMERCIAL</mat-option>
-                      <mat-option value="ESTOQUE">ESTOQUE</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div>
-                  <mat-form-field>
-                    <input matInput placeholder="Data de Pagamento" name="vendaDataPagamento" id="vendaDataPagamento" readonly
-                      formControlName="vendaDataPagamento" [matDatepicker]="vendaDataPagamento" (focus)="vendaDataPagamento.open()">
-                  </mat-form-field>
-                  <mat-datepicker #vendaDataPagamento></mat-datepicker>
-                  <mat-form-field>
-                    <mat-select placeholder="Local Destino" name="localDestino" id="localDestino" formControlName="localDestino">
-                      <mat-option *ngFor="let localDest of locaisDestino;" value="{{localDest}}">{{localDest}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-            <!--</mat-card-content>
-          </mat-card>-->
+          <app-cliente (clienteSelected)="onClienteSelected($event)"></app-cliente>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Estado Cliente" name="estadoCliente" id="estadoCliente" formControlName="estadoCliente">
+                <mat-option value="GO">GO</mat-option>
+                <mat-option value="MG">MG</mat-option>
+                <mat-option value="PR">PR</mat-option>
+                <mat-option value="RS">RS</mat-option>
+                <mat-option value="RJ">RJ</mat-option>
+                <mat-option value="SC">SC</mat-option>
+                <mat-option value="SP">SP</mat-option>
+                <mat-option value="OUTROSESTADOS">OUTROS ESTADOS</mat-option>
+                <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Atividade Venda" name="tipoAtividadeVenda" id="tipoAtividadeVenda" formControlName="tipoAtividadeVenda">
+                <mat-option value="PROD">PRODUTOR</mat-option>
+                <mat-option value="RACOES">RAÇÕES</mat-option>
+                <mat-option value="GRANJA">GRANJA</mat-option>
+                <mat-option value="HUMANO">HUMANO</mat-option>
+                <mat-option value="OUTROS">OUTROS</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <span>
+              <label>Frete: </label>
+              <mat-radio-group formControlName="vendaPossuiFrete">
+                <mat-radio-button value="false" name="vendaPossuiFrete" id="vendaPossuiFrete_N">
+                  Não&nbsp;&nbsp;&nbsp;
+                </mat-radio-button>
+                <mat-radio-button value="true" name="vendaPossuiFrete" id="vendaPossuiFrete_S">
+                  Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </mat-radio-button>
+              </mat-radio-group>
+            </span>
+          </div>
+          <div>
+            <span>
+              <label>Tipo Frete: </label>
+              <mat-radio-group formControlName="vendaTipoFrete">
+                <mat-radio-button value="PESSOA_FISICA" name="vendaTipoFrete" id="vendaTipoFrete_PF">
+                  PF&nbsp;
+                </mat-radio-button>
+                <mat-radio-button value="PESSOA_JURIDICA" name="vendaTipoFrete" id="vendaTipoFrete_PJ">
+                  PJ&nbsp;&nbsp;&nbsp;&nbsp;
+                </mat-radio-button>
+              </mat-radio-group>
+            </span>
+            <mat-form-field>
+              <input matInput type="number" min="1" name="vendaFrete" id="vendaFrete" placeholder="Valor do Frete/Ton" formControlName="vendaFrete">
+            </mat-form-field>
+          </div>
+          <div>
+            <span>
+              <label>Corr.: </label>
+              <mat-radio-group formControlName="vendaPossuiCorretor">
+                <mat-radio-button value="false" name="vendaPossuiCorretor" id="vendaPossuiCorretor_N">
+                  Não&nbsp;&nbsp;&nbsp;
+                </mat-radio-button>
+                <mat-radio-button value="true" name="vendaPossuiCorretor" id="vendaPossuiCorretor_S" >
+                  Sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </mat-radio-button>
+              </mat-radio-group>
+            </span>
+            <mat-form-field>
+              <input matInput type="number" min="1" name="vendaCorret" id="vendaCorret" placeholder="Valor Comissão" formControlName="vendaCorret">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Destino Grão" name="destGrao" id="destGrao" formControlName="destGrao">
+                <mat-option value="ESTOQUE">ESTOQUE</mat-option>
+                <mat-option value="EXPORTACAO">EXPORTAÇÃO</mat-option>
+                <mat-option value="MERCADO INTERNO">MERCADO INTERNO</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Tipo de Venda" name="tpPedido" id="tpPedido" formControlName="tpPedido">
+                <mat-option value="COMERCIAL">COMERCIAL</mat-option>
+                <mat-option value="ESTOQUE">ESTOQUE</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Data de Pagamento" name="vendaDataPagamento" id="vendaDataPagamento" readonly
+                formControlName="vendaDataPagamento" [matDatepicker]="vendaDataPagamento" (focus)="vendaDataPagamento.open()">
+            </mat-form-field>
+            <mat-datepicker #vendaDataPagamento></mat-datepicker>
+            <mat-form-field>
+              <mat-select placeholder="Local Destino" name="localDestino" id="localDestino" formControlName="localDestino">
+                <mat-option *ngFor="let localDest of locaisDestino;" value="{{localDest}}">{{localDest}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
         <div style="clear: both;">&nbsp;</div>
-      <!-- </mat-grid-tile>
-    </mat-grid-list> -->
-
-    <mat-action-row>
-      <button mat-button type="button" color="warn" (click)="prevStep()">Anterior</button>
-      <button mat-button type="button" color="primary" (click)="nextStep()">Próximo</button>
-    </mat-action-row>
+      <mat-action-row>
+        <button mat-button type="button" color="warn" (click)="prevStep()">Anterior</button>
+        <button mat-button type="button" color="primary" (click)="nextStep()">Próximo</button>
+      </mat-action-row>
     </div>
   </mat-expansion-panel>
 
@@ -368,31 +322,31 @@
     <div *ngIf="pedido.compra != null">
       <div style="float: left;" *ngIf="pedido.compra != null">
         <h2>Compra</h2><br/>
-        Valor Líquido: {{ pedido.valorLiq }}<br/>
-        ICMS: {{ pedido.compra.valorIcmsProdutor }}<br/>
-        Funrural: {{ pedido.compra.valorFunRural }}<br/>
-        Senar: {{ pedido.compra.valorSenar }}<br/>
-        PAT: {{ pedido.compra.valorPat }}<br/>
-        Valor Bruto: {{ pedido.compra.valorBrutoCompra }}<br/>
-        Frete: {{ pedido.compra.compraFreteTotal }}<br/>
-        Corretagem: {{ pedido.compra.compraCorretTotal }}<br/>
-        Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
+        Valor Líquido: {{ pedido.valorLiq | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        ICMS: {{ pedido.compra.valorIcmsProdutor | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        Funrural: {{ pedido.compra.valorFunRural | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        Senar: {{ pedido.compra.valorSenar | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        PAT: {{ pedido.compra.valorPat | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        Valor Bruto: {{ pedido.compra.valorBrutoCompra | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        Frete: {{ pedido.compra.compraFreteTotal | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        Corretagem: {{ pedido.compra.compraCorretTotal | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
+        Custo da Compra: {{ pedido.compra.compraCustoTotal | currency:'BRL':'symbol-narrow':'1.2-2'}}<br/>
       </div>
       <div style="float: left; padding-left: 20%;" *ngIf="pedido.compra != null && pedido.venda != null">
         <h2>Venda</h2><br/>
-        Custo da Compra: {{ pedido.compra.compraCustoTotal }}<br/>
-        Frete: {{ pedido.venda.vendaFreteTotal }}<br/>
-        Corretagem: {{ pedido.venda.vendaCorretTotal }}<br/>
-        ICMS: {{ pedido.venda.vendaValorIcms }}<br/>
-        PIS e COFINS: {{ pedido.venda.vendaValorPisECofins }}<br/>
-        Valor Final com Impostos: {{ pedido.venda.vendaCustoTotal }}<br/>
+        Custo da Compra: {{ pedido.compra.compraCustoTotal | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
+        Frete: {{ pedido.venda.vendaFreteTotal | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
+        Corretagem: {{ pedido.venda.vendaCorretTotal | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
+        ICMS: {{ pedido.venda.vendaValorIcms | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
+        PIS e COFINS: {{ pedido.venda.vendaValorPisECofins | currency:'BRL':'symbol':'1.2-2' }}<br/>
+        Valor Final com Impostos: {{ pedido.venda.vendaCustoTotal | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
       </div>
       <div style="float: right;" *ngIf="pedido.venda != null">
         <h2>Margem</h2><br/>
-        Preço de Venda (à Vista): {{pedido.valorVenda}} <br/>
-        Custo Total: {{ pedido.venda.vendaCustoTotal }}<br/>
-        Margem Total: {{ pedido.margemTotal }}<br/>
-        %Margem: {{ pedido.margem }}<br/>
+        Preço de Venda (à Vista): {{ pedido.valorVenda | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
+        Custo Total: {{ pedido.venda.vendaCustoTotal | currency:'BRL':'symbol-narrow':'1.2-2' }}<br/>
+        Margem Total: {{ pedido.margemTotal | number:'1.2-2' }}<br/>
+        Margem (%): {{ pedido.margem | number:'1.2-2' }}%<br/>
       </div>
       <div style="clear: both;">&nbsp;</div>
     </div>
@@ -404,51 +358,6 @@
 
 </mat-accordion>
 
-<!--
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Input">
-  </mat-form-field>
-
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Enter your email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-</div>
-<div class="example-container">
-  <mat-form-field hintLabel="Max 10 characters">
-    <input matInput #input maxlength="10" placeholder="Enter some input">
-    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select placeholder="Select me">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput placeholder="First name">
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput type="number" min="1" placeholder="Age">
-  </mat-form-field>
-</div>
--->
 <br/>
 <button type="submit" mat-raised-button color="primary">Salvar</button>
 </form>

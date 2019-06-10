@@ -1,5 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './core/material.module';
@@ -21,6 +23,8 @@ import { ListUserComponent } from './user/list-user/list-user.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { PedidoAnaliseComponent } from './pedido/pedido-analise/pedido-analise.component';
+
+registerLocaleData(ptBr)
 
 @NgModule({
   declarations: [
@@ -51,6 +55,7 @@ import { PedidoAnaliseComponent } from './pedido/pedido-analise/pedido-analise.c
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+    {provide: LOCALE_ID, useValue: 'pt'},
     Title
   ],
   bootstrap: [AppComponent]
