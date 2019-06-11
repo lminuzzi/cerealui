@@ -8,6 +8,7 @@ export class Pedido {
     nrSiscdb: number;
     nrPedido: number;
     codComprador: number;
+    nomeComprador: string;
     fornecedor: Fornecedor;
     cliente: Cliente;
     pedidoDadoBancario: PedidoDadoBancario;

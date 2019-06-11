@@ -11,7 +11,6 @@ export class Compra {
   compraPossuiFrete: boolean;
   compraPossuiCorretor: boolean;
   compraTipoFrete: string;
-  nomeComprador: string;
   produtorCidade: string;
   produtorEstado: string;
   produtorRazaoNome: string;

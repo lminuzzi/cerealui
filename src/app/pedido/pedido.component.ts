@@ -5,6 +5,7 @@ import { PedidoService } from './pedido.service';
 import { Router } from '@angular/router';
 import { Fornecedor } from '../fornecedor/fornecedor';
 import { provideLocationStrategy } from '@angular/router/src/router_module';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-pedido',
@@ -20,6 +21,7 @@ export class PedidoComponent implements OnInit {
   public formPedido: FormGroup
   public pedido:Pedido = new Pedido()
   public fornecedor:Fornecedor = new Fornecedor()
+  user: User = JSON.parse(window.sessionStorage.getItem('user'));
 
   empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES', 'NOBRE ALIMENTOS']
 
@@ -70,7 +72,8 @@ export class PedidoComponent implements OnInit {
     this.formPedido = this.formBuilder.group({
       nrSiscdb: [''],
       nrPedido: [''],
-      codComprador: [''],
+      codComprador: [this.user.id],
+      nomeComprador: [this.user.username],
       pedidoDadoBancario: this.formBuilder.group({
         titularBanco: ['', [Validators.required]],
         cpfBanco: ['', [Validators.required]],
@@ -115,7 +118,6 @@ export class PedidoComponent implements OnInit {
         compraPossuiFrete: ['false', [Validators.required]],
         compraPossuiCorretor: ['false', [Validators.required]],
         compraTipoFrete: ['PESSOA_FISICA', [Validators.required]],
-        nomeComprador: [''],
         produtorCidade: [''],
         produtorEstado: [''],
         produtorRazaoNome: [''],
