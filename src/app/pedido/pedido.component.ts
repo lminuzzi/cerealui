@@ -4,7 +4,6 @@ import { Pedido } from './pedido';
 import { PedidoService } from './pedido.service';
 import { Router } from '@angular/router';
 import { Fornecedor } from '../fornecedor/fornecedor';
-import { provideLocationStrategy } from '@angular/router/src/router_module';
 import { User } from '../user/user';
 import { MatSnackBar } from '@angular/material';
 
@@ -176,8 +175,6 @@ export class PedidoComponent implements OnInit {
       valorLiqTotal: [''],
       valorVenda: ['', [Validators.required]]
     });
-
-    //this.analisarPedido();
   }
 
   public analisarPedido() {
