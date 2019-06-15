@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Fornecedor } from '../fornecedor/fornecedor';
 import { provideLocationStrategy } from '@angular/router/src/router_module';
 import { User } from '../user/user';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-pedido',
@@ -16,7 +17,8 @@ export class PedidoComponent implements OnInit {
 
   constructor(private router: Router,
               private pedidoService:PedidoService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private snackBar: MatSnackBar) { }
 
   public formPedido: FormGroup
   public pedido:Pedido = new Pedido()
@@ -181,7 +183,7 @@ export class PedidoComponent implements OnInit {
   public analisarPedido() {
     this.pedidoService.analisarPedido(this.formPedido.value)
       .subscribe( data => {
-        console.log('***** retorno data = ' + JSON.stringify(data));
+        console.log('***** retorno analise data = ' + JSON.stringify(data));
         this.pedido = data;
       });
   }
@@ -198,12 +200,12 @@ export class PedidoComponent implements OnInit {
 
   onSubmit() {
     //alert('submit')
-    this.pedidoService.createPedido(this.formPedido.value);
-    /*
     this.pedidoService.createPedido(this.formPedido.value)
       .subscribe( data => {
-        this.router.navigate(['list-user']);
+        console.log('***** retorno salvar data = ' + JSON.stringify(data));
+        //this.router.navigate(['list-user']);
+        this.snackBar.open('Pedido salvo com sucesso!', 'Fechar', {duration: 3000})
       });
-    */
+
   }
 }

@@ -4,7 +4,7 @@ import {
   MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
   MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule, MatFormFieldModule,
   MatExpansionModule, MatSidenavModule, MatListModule, MatAutocompleteModule, MatSelectModule,
-  MatSlideToggleModule, MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatRadioModule
+  MatSlideToggleModule, MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatRadioModule, MatSnackBarModule
 } from '@angular/material';
 import { MatDividerModule } from '@angular/material/divider';
 
@@ -55,7 +55,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSlideToggleModule,
     MatGridListModule,
     MatRadioModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSnackBarModule
   ],
 })
 export class CustomMaterialModule { }
