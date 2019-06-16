@@ -34,7 +34,7 @@ export class DownloadComponent implements OnInit {
   @ViewChild('downloadZipLink') private downloadZipLink: ElementRef;
 
   onSubmit() {
-    this.downloadService.downloadPDF(Number.parseInt(this.formDownload.value.nrSiscdb))
+    this.downloadService.downloadPDFPedido(Number.parseInt(this.formDownload.value.nrSiscdb))
       .subscribe( data => {
         const url = window.URL.createObjectURL(data);
 

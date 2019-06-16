@@ -12,11 +12,20 @@ export class DownloadService {
 
   constructor(private http:HttpClient) { }
 
-  downloadPDF(nrSiscdb: number): Observable<Blob> {
-    console.log('***** download = ' + JSON.stringify(nrSiscdb));
+  downloadPDFPedido(nrSiscdb: number): Observable<Blob> {
+    console.log('***** download do pedido = ' + JSON.stringify(nrSiscdb));
     let headers = new HttpHeaders();
     headers = headers.set('Accept', 'application/pdf');
     return this.http.get<Blob>(this.url + '/pdf/' + nrSiscdb + '?access_token=' +
+        JSON.parse(window.sessionStorage.getItem('token')).access_token,
+        { headers: headers, responseType: 'blob' as 'json'});
+  }
+
+  downloadPDFContrato(nrSiscdb: number): Observable<Blob> {
+    console.log('***** download do contrato = ' + JSON.stringify(nrSiscdb));
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/pdf');
+    return this.http.get<Blob>(this.url + '/pdfcontrato/' + nrSiscdb + '?access_token=' +
         JSON.parse(window.sessionStorage.getItem('token')).access_token,
         { headers: headers, responseType: 'blob' as 'json'});
   }

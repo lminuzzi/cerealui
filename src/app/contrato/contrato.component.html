@@ -1,3 +1,9 @@
-<p>
-  contrato works!
-</p>
+<form [formGroup]="formContrato" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput type="number" min="1" name="nrSiscdb" id="nrSiscdb" formControlName="nrSiscdb" placeholder="Número do Pedido">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Buscar</button>
+</form>
+<div style="display: none;">
+    <a class="download-zip-link" #downloadZipLink></a>
+</div>
