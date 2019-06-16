@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material';
 export class PedidoComponent implements OnInit {
 
   constructor(private router: Router,
-              private pedidoService:PedidoService,
+              private pedidoService: PedidoService,
               private formBuilder: FormBuilder,
               private snackBar: MatSnackBar) { }
 
@@ -196,13 +196,12 @@ export class PedidoComponent implements OnInit {
   }
 
   onSubmit() {
-    //alert('submit')
     this.pedidoService.createPedido(this.formPedido.value)
       .subscribe( data => {
         console.log('***** retorno salvar data = ' + JSON.stringify(data));
-        //this.router.navigate(['list-user']);
-        this.snackBar.open('Pedido salvo com sucesso!', 'Fechar', {duration: 3000})
+        this.pedido = data;
+        this.snackBar.open('Pedido salvo com sucesso!', 'Fechar', {duration: 3000});
+        this.router.navigate(['downloads', this.pedido.nrSiscdb]);
       });
-
   }
 }

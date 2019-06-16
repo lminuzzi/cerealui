@@ -23,6 +23,7 @@ import { ListUserComponent } from './user/list-user/list-user.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { PedidoAnaliseComponent } from './pedido/pedido-analise/pedido-analise.component';
+import { DownloadComponent } from './download/download.component';
 
 registerLocaleData(ptBr)
 
@@ -38,7 +39,8 @@ registerLocaleData(ptBr)
     EditUserComponent,
     ListUserComponent,
     DialogConfirmComponent,
-    PedidoAnaliseComponent
+    PedidoAnaliseComponent,
+    DownloadComponent
   ],
   imports: [
     BrowserModule,
