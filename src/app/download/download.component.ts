@@ -35,15 +35,24 @@ export class DownloadComponent implements OnInit {
 
   onSubmit() {
     this.downloadService.downloadPDFPedido(Number.parseInt(this.formDownload.value.nrSiscdb))
-      .subscribe( data => {
+    //this.downloadService.downloadTeste()
+      .subscribe(data => {
         const url = window.URL.createObjectURL(data);
 
         const link = this.downloadZipLink.nativeElement;
         link.href = url;
         link.download = 'pedido_'+this.formDownload.value.nrSiscdb+'.pdf';
+        //link.download = 'pedido_teste.pdf';
         link.click();
 
         window.URL.revokeObjectURL(url);
       })
+
+    /*
+    this.downloadService.listaArquivos()
+      .subscribe(data => {
+        console.log(JSON.stringify(data))
+      });
+    */
   }
 }

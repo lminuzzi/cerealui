@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -28,5 +28,25 @@ export class DownloadService {
     return this.http.get<Blob>(this.url + '/pdfcontrato/' + nrSiscdb + '?access_token=' +
         JSON.parse(window.sessionStorage.getItem('token')).access_token,
         { headers: headers, responseType: 'blob' as 'json'});
+  }
+
+  downloadTeste(): Observable<Blob> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/pdf');
+    var caminho = 'webapps/cerealsulapp/WEB-INF/classes/static/pdftemplates/htmlPedido_428.pdf';
+    let body = new HttpParams();
+    body = body.set('caminho', caminho);
+    console.log(caminho);
+    return this.http.post<Blob>(this.url + '/pdfcontrato', body,
+        { headers: headers, responseType: 'blob' as 'json'});
+  }
+
+  listaArquivos() {
+    //var caminho = "src/main/resources/static/pdftemplates/";
+    var caminho = "webapps/cerealsulapp/WEB-INF/classes/static/pdftemplates/";
+    let body = new HttpParams();
+    body = body.set('caminho', caminho);
+    console.log(caminho);
+    return this.http.post(this.url + '/listaarquivos', body);
   }
 }
