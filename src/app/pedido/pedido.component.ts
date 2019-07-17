@@ -24,7 +24,7 @@ export class PedidoComponent implements OnInit {
   public fornecedor:Fornecedor = new Fornecedor()
   user: User = JSON.parse(window.sessionStorage.getItem('user'));
 
-  empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES', 'NOBRE ALIMENTOS']
+  empresas: string[] = ['CEREAIS SUL', 'BOA SAFRA SEMENTES']
 
   produtorEstados: string[] = ['DF', 'GO', 'MG']
 
@@ -74,7 +74,7 @@ export class PedidoComponent implements OnInit {
       nrSiscdb: [''],
       nrPedido: [''],
       codComprador: [this.user.id],
-      nomeComprador: [this.user.username],
+      nomeComprador: [this.user.nome],
       pedidoDadoBancario: this.formBuilder.group({
         titularBanco: ['', [Validators.required]],
         cpfBanco: ['', [Validators.required]],
