@@ -2,7 +2,9 @@
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
 </mat-form-field>&nbsp;
-<button mat-raised-button color="primary" (click)="addUser()">Incluir</button>
+<div *ngIf="user.perfil != 'VENDEDOR'">
+  <button mat-raised-button color="primary" (click)="addUser()">Incluir</button>
+</div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="username">
@@ -18,7 +20,7 @@
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <div *ngIf="!(user.perfil == 'GERENTE' && userObj.perfil == 'ADMIN')">
+      <div *ngIf="!(user.perfil == 'GERENTE' && element.perfil == 'ADMIN') && user.perfil != 'VENDEDOR'">
         <button mat-raised-button (click)="editUser(element)">Editar</button>&nbsp;
         <button mat-raised-button (click)="confirmDeleteUser(element)">Excluir</button>
       </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DownloadService } from './download.service';
 
 @Component({
@@ -12,12 +12,17 @@ export class DownloadComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
+              private router: Router,
               private downloadService: DownloadService) { }
 
   public formDownload: FormGroup
   nrSiscdbParam: number
 
   ngOnInit() {
+    if(!window.sessionStorage.getItem('token')) {
+      this.router.navigate(['login']);
+      return;
+    }
     this.route.params.subscribe((params: Params) => this.nrSiscdbParam = params['nrSiscdb']);
     var nrSiscdbForm = ''
     if(this.nrSiscdbParam != undefined) {

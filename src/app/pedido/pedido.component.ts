@@ -5,7 +5,7 @@ import { PedidoService } from './pedido.service';
 import { Router } from '@angular/router';
 import { Fornecedor } from '../fornecedor/fornecedor';
 import { User } from '../user/user';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDatepickerInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-pedido',
@@ -44,6 +44,13 @@ export class PedidoComponent implements OnInit {
   anoAtual = new Date().getFullYear()
   safraValorInicial = (this.anoAtual-1) + "/" + this.anoAtual
   safraValorFinal = this.anoAtual + "/" + (this.anoAtual+1)
+
+  minDate = new Date(2017, 0, 1);
+  
+  changeMinDate(event: MatDatepickerInputEvent<Date>) {
+    this.minDate = new Date(event.value);
+    this.minDate.setDate(this.minDate.getDate() + 5 );
+  }
 
   setStep(index: number) {
     this.step = index;
@@ -133,7 +140,8 @@ export class PedidoComponent implements OnInit {
         valorFunRural: [''],
         valorSenar: [''],
         valorPat: [''],
-        valorBrutoCompra: ['']
+        valorBrutoCompra: [''],
+        compraObs: ['']
       }),
       venda: this.formBuilder.group({
         vendaCorret: [''],
